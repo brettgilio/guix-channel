@@ -421,3 +421,33 @@ See more at https://github.com/MaskRay/ccls/wiki/Emacs
      (description
       "")
      (license license:gpl3+))))
+
+(define-public emacs-fsharp-mode
+  (let ((commit "5d8d8dd6d5fbb2d23f1e773a77bde4ffc187ebe5")
+        (revision "0"))
+    (package
+     (name "emacs-fsharp-mode")
+     (version (git-version "1.9.13" revision commit))
+     (source (origin
+              (method git-fetch)
+              (uri (git-reference
+                    (url "https://github.com/fsharp/emacs-fsharp-mode.git")
+                    (commit commit)))
+              (sha256
+               (base32
+                "0wkqff126gpfzs0nvfvzkgxi9m5npl23j2pq8s9ssnkwlvk7h0jh"))
+              (file-name (git-file-name name version))))
+     (build-system emacs-build-system)
+     (propagated-inputs
+      `(("emacs-company" ,emacs-company)
+	("emacs-company-quickhelp"
+	 ,emacs-company-quickhelp)
+	("emacs-popup" ,emacs-popup)
+	("emacs-pos-tip" ,emacs-pos-tip)
+	("emacs-s" ,emacs-s)
+	("emacs-dash" ,emacs-dash)
+	("emacs-flycheck" ,emacs-flycheck)))
+     (home-page "https://github.com/fsharp/emacs-fsharp-mode")
+     (synopsis "F# mode for Emacs")
+     (description "F# mode for Emacs.")
+     (license license:asl2.0))))
