@@ -221,11 +221,11 @@ modeline easier.
      (license license:gpl3+))))
 
 (define-public emacs-company-coq
-  (let ((commit "93168e134099541a923e70f9d633c78de1aa0c6f")
-        (revision "0"))
+  (let ((commit "a4e0625725e4f54d202e746bb41b8bc14c14ddef")
+        (revision "1"))
     (package
      (name "emacs-company-coq")
-     (version (git-version "1.0" revision commit))
+     (version (git-version "1.0.1" revision commit))
      (source (origin
               (method git-fetch)
               (uri (git-reference
@@ -233,7 +233,7 @@ modeline easier.
                     (commit commit)))
               (sha256
                (base32
-                "0qa96iq99cwlmylzbrknkg3fkhc1x4ngwlpz9rppgzlghpfb3xs7"))
+                "0dxi4h8xqq5647k7h89s4pi8nwyj3brlhsckrv3p3b1g4dr6mk3b"))
               (file-name (git-file-name name version))))
      (build-system emacs-build-system)
      (propagated-inputs
