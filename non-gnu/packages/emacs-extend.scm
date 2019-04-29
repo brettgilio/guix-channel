@@ -451,3 +451,30 @@ See more at https://github.com/MaskRay/ccls/wiki/Emacs
      (synopsis "F# mode for Emacs")
      (description "F# mode for Emacs.")
      (license license:asl2.0))))
+
+(define-public emacs-hy-mode
+  (let ((commit "d7b4609a0c2ecc2a64f4328e63cf0899d72d930e")
+        (revision "0"))
+    (package
+     (name "emacs-hy-mode")
+     (version (git-version "1.0.3" revision commit))
+     (source (origin
+              (method git-fetch)
+              (uri (git-reference
+                    (url "https://github.com/hylang/hy-mode.git")
+                    (commit commit)))
+              (sha256
+               (base32
+                "0gh81qk4yhgq46fm9a1cjs26d5vj3ip03i474b7v4aa7bc327jp7"))
+              (file-name (git-file-name name version))))
+     (build-system emacs-build-system)
+     (propagated-inputs
+      `(("emacs-dash" ,emacs-dash)
+	("emacs-s" ,emacs-s)))
+     (home-page "http://github.com/hylang/hy-mode")
+     (synopsis "Major mode for Hylang")
+     (description
+      "Provides font-lock, indentation, and navigation for the Hy
+language. (http://hylang.org)
+")
+     (license #f))))
