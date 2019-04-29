@@ -197,9 +197,10 @@ modeline easier.
 ")
        (license license:gpl3+))))
 
+;; Track master
 (define-public emacs-eldoc-eval
-  (let ((commit "deca5e39f31282a06531002d289258cd099433c0")
-        (revision "0"))
+  (let ((commit "a67fe3637378dcb6c5f9e140acc8131f0d2346b3")
+        (revision "1"))
     (package
      (name "emacs-eldoc-eval")
      (version (git-version "1.1" revision commit))
@@ -210,7 +211,7 @@ modeline easier.
                     (commit commit)))
               (sha256
                (base32
-                "1fh9dx669czkwy4msylcg64azz3az27akx55ipnazb5ghmsi7ivk"))
+                "0504yyzxp1rk0br6f25395n4aa4w8ixf59vqxxb55a7agxplfpjc"))
               (file-name (git-file-name name version))))
      (build-system emacs-build-system)
      (home-page "https://github.com/thierryvolpiatto/eldoc-eval")
