@@ -22,8 +22,8 @@
 
 ;; Stop tracking tags, and track master instead
 (define-public proof-general
-  (let ((commit "612eac576472f405fc64af98d1f1c5a13cd5fb0a")
-        (revision "2"))
+  (let ((commit "946be87a944c9d8b850fdddb83d36e2ef9dad5c9")
+        (revision "3"))
     (package
      (name "proof-general")
      (version (git-version "4.4" revision commit))
@@ -34,7 +34,7 @@
                     (commit commit)))
               (sha256
                (base32
-                "09r7fk62v0plgjlzlq8a4qrj2cmah518jick396k15b6jqb7kgm3"))
+                "1clk1r5h0bjshw45ywqqfswkh6xpa563q8c2cmhy2rhf3l0g2g22"))
               (file-name (git-file-name name version))))
      (build-system gnu-build-system)
      (native-inputs
