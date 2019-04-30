@@ -101,3 +101,29 @@
    (synopsis "Lisp and Python love each other.")
    (description "Lisp and Python love each other.")
    (license license:expat)))
+
+(define-public hylang-gently
+  (package
+   (name "hylang-gently")
+   (version "0.16")
+   (source
+    (origin
+     (method url-fetch)
+     (uri (pypi-uri "gently" version))
+     (sha256
+      (base32
+       "19zcff5plykihcvlkbqahign6x7s9s4ixyc6ix2w844wnbs03jmh"))))
+   (build-system python-build-system)
+   (propagated-inputs
+    `(("python-control" ,python-control)
+      ("hylang" ,hylang)
+      ("python-matplotlib" ,python-matplotlib)
+      ("python-sympy" ,python-sympy)))
+   (home-page
+    "https://github.com/celaleddin/gently/")
+   (synopsis
+    "A tool for designing and analysing control systems")
+   (description
+    "A tool for designing and analysing control systems")
+   (license license:expat)))
+
