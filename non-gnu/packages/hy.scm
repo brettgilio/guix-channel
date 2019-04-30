@@ -127,3 +127,23 @@
     "A tool for designing and analysing control systems")
    (license license:expat)))
 
+(define-public hylang-hydiomatic
+  (package
+   (name "hylang-hydiomatic")
+   (version "0.1.1")
+   (source
+    (origin
+     (method url-fetch)
+     (uri (pypi-uri "hydiomatic" version))
+     (sha256
+      (base32
+       "0s16a62kx10i92r79vycanyy0s3jx35jjnw460qvkrp6j21gbwcv"))))
+   (build-system python-build-system)
+   (propagated-inputs
+    `(("hylang-adderall" ,hylang-adderall)
+      ("hylang" ,hylang)))
+   (home-page
+    "https://github.com/algernon/hydiomatic")
+   (synopsis "The Hy Transformer")
+   (description "The Hy Transformer")
+   (license license:gpl3+)))
