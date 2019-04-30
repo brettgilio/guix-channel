@@ -147,3 +147,23 @@
    (synopsis "The Hy Transformer")
    (description "The Hy Transformer")
    (license license:gpl3+)))
+
+(define-public hylang-monaxhyd
+  (package
+   (name "hylang-monaxhyd")
+   (version "0.2.1")
+   (source
+    (origin
+     (method url-fetch)
+     (uri (pypi-uri "monaxhyd" version))
+     (sha256
+      (base32
+       "10prmwyf07b1z264ghna6a06v2nmr6s9dp7s6gdfp2f2pnigmcp3"))))
+   (build-system python-build-system)
+   (propagated-inputs
+    `(("python-hy" ,python-hy)))
+   (home-page
+    "https://github.com/algernon/monaxhyd")
+   (synopsis "")
+   (description "")
+   (license license:epl1.0)))
