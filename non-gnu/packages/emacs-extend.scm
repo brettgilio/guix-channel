@@ -452,3 +452,31 @@ See more at https://github.com/MaskRay/ccls/wiki/Emacs
      (synopsis "F# mode for Emacs")
      (description "F# mode for Emacs.")
      (license license:asl2.0))))
+
+(define-public emacs-md4rd
+  (let ((commit "443c8059af4925d11c93a1293663165c52472f08")
+        (revision "1"))
+    (package
+     (name "emacs-md4rd")
+     (version (git-version "0.3.1" revision commit))
+     (source (origin
+              (method git-fetch)
+              (uri (git-reference
+                    (url "https://github.com/ahungry/md4rd.git")
+                    (commit commit)))
+              (sha256
+               (base32
+                "1n6g6k4adzkkn1g7z4j27s35xy12c1fg2r08gv345ddr3wplq4ri"))
+              (file-name (git-file-name name version))))
+     (build-system emacs-build-system)
+     (propagated-inputs
+      `(("emacs-hierarchy" ,emacs-hierarchy)
+	("emacs-request" ,emacs-request)
+	("emacs-dash" ,emacs-dash)
+	("emacs-s" ,emacs-s)
+	("emacs-tree-mode" ,emacs-tree-mode)))
+     (home-page "https://github.com/ahungry/md4rd")
+     (synopsis "Emacs Mode for Reddit")
+     (description
+      "This package allows to read Reddit from within Emacs interactively.")
+     (license license:gpl3+))))
