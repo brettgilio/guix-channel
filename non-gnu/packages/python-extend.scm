@@ -74,7 +74,8 @@
   #:use-module (guix build-system python)
   #:use-module (guix build-system trivial)
   #:use-module (srfi srfi-1)
-  #:use-module (srfi srfi-26))
+  #:use-module (srfi srfi-26)
+  #:use-module (non-gnu packages hy))
 
 (define-public python-fastentrypoints
   (package
@@ -140,3 +141,28 @@
 works with RPython.  It is a more-or-less direct port of David Bazzley's PLY,
 with a new public API, and RPython support.")
     (license license:bsd-3)))
+
+(define-public python-control
+  (package
+   (name "python-control")
+   (version "0.8.2")
+   (source
+    (origin
+     (method url-fetch)
+     (uri (pypi-uri "control" version))
+     (sha256
+      (base32
+       "1nxayfzw6y7hblfl4hdhz3j0vms0sxhghcfzhs44r9akl8v8qvkj"))))
+   (build-system python-build-system)
+   (arguments
+    `(#:tests? #f))
+   (propagated-inputs
+    `(("python-matplotlib" ,python-matplotlib)
+      ("python-numpy" ,python-numpy)
+      ("python-scipy" ,python-scipy)
+      ("python-nose" ,python-nose)))
+   (home-page
+    "http://python-control.sourceforge.net")
+   (synopsis "Python control systems library")
+   (description "Python control systems library")
+   (license license:bsd-3)))
