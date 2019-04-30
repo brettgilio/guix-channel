@@ -480,3 +480,26 @@ See more at https://github.com/MaskRay/ccls/wiki/Emacs
      (description
       "This package allows to read Reddit from within Emacs interactively.")
      (license license:gpl3+))))
+
+(define-public emacs-rust-mode
+  (let ((commit "106aeab800fb3404baf231845d3e3549ec235afa")
+        (revision "1"))
+    (package
+     (name "emacs-rust-mode")
+     (version (git-version "0.4.0" revision commit))
+     (source (origin
+              (method git-fetch)
+              (uri (git-reference
+                    (url "https://github.com/rust-lang/rust-mode.git")
+                    (commit commit)))
+              (sha256
+               (base32
+                "0bcrklyicxh032rrp585rl5mxd26nb61dp6r5bl935rlcmxzsczh"))
+              (file-name (git-file-name name version))))
+     (build-system emacs-build-system)
+     (home-page
+      "https://github.com/rust-lang/rust-mode")
+     (synopsis
+      "A major emacs mode for editing Rust source code")
+     (description "")
+     (license #f))))
