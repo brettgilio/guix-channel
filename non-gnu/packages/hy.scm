@@ -167,3 +167,25 @@
    (synopsis "")
    (description "")
    (license license:epl1.0)))
+
+(define-public hylang-adderall
+  (package
+   (name "hylang-adderall")
+   (version "2.0.0")
+   (source
+    (origin
+     (method url-fetch)
+     (uri (pypi-uri "adderall" version))
+     (sha256
+      (base32
+       "0r739dr1fwz03vf9509kka1ykv4z0qyf153cqkc7xp24dxh67zcn"))))
+   (build-system python-build-system)
+   (propagated-inputs
+    `(("hylang" ,hylang)
+      ("hylang-monaxhyd" ,hylang-monaxhyd)
+      ("python-nose" ,python-nose)))
+   (home-page
+    "https://github.com/algernon/adderall")
+   (synopsis "Static code")
+   (description "Static code")
+   (license license:gpl3+)))
