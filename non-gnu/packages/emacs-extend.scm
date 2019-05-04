@@ -503,3 +503,28 @@ See more at https://github.com/MaskRay/ccls/wiki/Emacs
       "A major emacs mode for editing Rust source code")
      (description "")
      (license #f))))
+
+(define-public emacs-lsp-haskell
+  (let ((commit "33e3ac438338b0a78971cd26aa919482d290c51b")
+        (revision "0"))
+    (package
+     (name "emacs-lsp-haskell")
+     (version (git-version "0.0.0" revision commit))
+     (source (origin
+              (method git-fetch)
+              (uri (git-reference
+                    (url "https://github.com/emacs-lsp/lsp-haskell.git")
+                    (commit commit)))
+              (sha256
+               (base32
+                "1ihc6djxsdrd0q9f79bs0qwxxhw3bnw1kxw2rq92drfnypqbiqcq"))
+              (file-name (git-file-name name version))))
+     (build-system emacs-build-system)
+     (propagated-inputs
+      `(("emacs-lsp-mode" ,emacs-lsp-mode)
+	("emacs-haskell-mode" ,emacs-haskell-mode)))
+     (home-page
+      "https://github.com/emacs-lsp/lsp-haskell")
+     (synopsis "Haskell support for lsp-mode")
+     (description "Haskell support for lsp-mode")
+     (license license:gpl3+))))
