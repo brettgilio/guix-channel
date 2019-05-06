@@ -62,70 +62,70 @@ provers.")
      (license license:gpl2+))))
 
 
-(define-public coq
-  (package
-    (name "coq")
-    (version "8.9.0")
-    (source
-     (origin
-       (method git-fetch)
-       (uri (git-reference
-             (url "https://github.com/coq/coq.git")
-             (commit (string-append "V" version))))
-       (file-name (git-file-name name version))
-       (sha256
-        (base32 "01ad7az6f95w16xya7979lk32agy22lf4bqgqf5qpnarpkpxhbw8"))))
-    (native-search-paths
-     (list (search-path-specification
-            (variable "COQPATH")
-            (files (list "lib/coq/user-contrib")))))
-    (build-system ocaml-build-system)
-    (inputs
-     `(("lablgtk" ,lablgtk)
-       ("python" ,python-2)
-       ("camlp5" ,camlp5)
-       ("ocaml-num" ,ocaml-num)
-       ("ocaml-ounit" ,ocaml-ounit)
-       ("rsync" ,rsync)))
-    (arguments
-     `(#:phases
-       (modify-phases %standard-phases
-         (add-after 'unpack 'make-git-checkout-writable
-           (lambda _
-             (for-each make-file-writable (find-files "."))
-             #t))
-         (replace 'configure
-           (lambda* (#:key outputs #:allow-other-keys)
-             (let* ((out (assoc-ref outputs "out"))
-                    (mandir (string-append out "/share/man"))
-                    (browser "icecat -remote \"OpenURL(%s,new-tab)\""))
-               (invoke "./configure"
-                       "-prefix" out
-                       "-mandir" mandir
-                       "-browser" browser
-                       "-coqide" "opt"))))
-         (replace 'build
-           (lambda _
-             (invoke "make"
-                     "-j" (number->string (parallel-job-count))
-                     "world")))
-         (delete 'check)
-         (add-after 'install 'check
-           (lambda _
-             (with-directory-excursion "test-suite"
-               ;; These two tests fail.
-               ;; This one fails because the output is not formatted as expected.
-               (delete-file-recursively "coq-makefile/timing")
-               ;; This one fails because we didn't build coqtop.byte.
-               (delete-file-recursively "coq-makefile/findlib-package")
-	       (delete-file-recursively "bugs/opened/3395.v")
-               (invoke "make")))))))
-    (home-page "https://coq.inria.fr")
-    (synopsis "Proof assistant for higher-order logic")
-    (description
-     "Coq is a proof assistant for higher-order logic, which allows the
-development of computer programs consistent with their formal specification.
-It is developed using Objective Caml and Camlp5.")
-    ;; The code is distributed under lgpl2.1.
-    ;; Some of the documentation is distributed under opl1.0+.
-    (license (list license:lgpl2.1 license:opl1.0+))))
+;; (define-public coq
+;;   (package
+;;     (name "coq")
+;;     (version "8.9.0")
+;;     (source
+;;      (origin
+;;        (method git-fetch)
+;;        (uri (git-reference
+;;              (url "https://github.com/coq/coq.git")
+;;              (commit (string-append "V" version))))
+;;        (file-name (git-file-name name version))
+;;        (sha256
+;;         (base32 "01ad7az6f95w16xya7979lk32agy22lf4bqgqf5qpnarpkpxhbw8"))))
+;;     (native-search-paths
+;;      (list (search-path-specification
+;;             (variable "COQPATH")
+;;             (files (list "lib/coq/user-contrib")))))
+;;     (build-system ocaml-build-system)
+;;     (inputs
+;;      `(("lablgtk" ,lablgtk)
+;;        ("python" ,python-2)
+;;        ("camlp5" ,camlp5)
+;;        ("ocaml-num" ,ocaml-num)
+;;        ("ocaml-ounit" ,ocaml-ounit)
+;;        ("rsync" ,rsync)))
+;;     (arguments
+;;      `(#:phases
+;;        (modify-phases %standard-phases
+;;          (add-after 'unpack 'make-git-checkout-writable
+;;            (lambda _
+;;              (for-each make-file-writable (find-files "."))
+;;              #t))
+;;          (replace 'configure
+;;            (lambda* (#:key outputs #:allow-other-keys)
+;;              (let* ((out (assoc-ref outputs "out"))
+;;                     (mandir (string-append out "/share/man"))
+;;                     (browser "icecat -remote \"OpenURL(%s,new-tab)\""))
+;;                (invoke "./configure"
+;;                        "-prefix" out
+;;                        "-mandir" mandir
+;;                        "-browser" browser
+;;                        "-coqide" "opt"))))
+;;          (replace 'build
+;;            (lambda _
+;;              (invoke "make"
+;;                      "-j" (number->string (parallel-job-count))
+;;                      "world")))
+;;          (delete 'check)
+;;          (add-after 'install 'check
+;;            (lambda _
+;;              (with-directory-excursion "test-suite"
+;;                ;; These two tests fail.
+;;                ;; This one fails because the output is not formatted as expected.
+;;                (delete-file-recursively "coq-makefile/timing")
+;;                ;; This one fails because we didn't build coqtop.byte.
+;;                (delete-file-recursively "coq-makefile/findlib-package")
+;; 	       (delete-file-recursively "bugs/opened/3395.v")
+;;                (invoke "make")))))))
+;;     (home-page "https://coq.inria.fr")
+;;     (synopsis "Proof assistant for higher-order logic")
+;;     (description
+;;      "Coq is a proof assistant for higher-order logic, which allows the
+;; development of computer programs consistent with their formal specification.
+;; It is developed using Objective Caml and Camlp5.")
+;;     ;; The code is distributed under lgpl2.1.
+;;     ;; Some of the documentation is distributed under opl1.0+.
+;;     (license (list license:lgpl2.1 license:opl1.0+))))
