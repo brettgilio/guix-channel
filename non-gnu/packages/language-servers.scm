@@ -21,7 +21,7 @@
 (define-public ccls
   (package
    (name "ccls")
-   (version "0.20190314")
+   (version "0.20190314.1")
    (home-page "https://github.com/MaskRay/ccls")
    (source (origin
 	    (method url-fetch)
@@ -30,7 +30,7 @@
 		  version ".tar.gz"))
 	    (sha256
              (base32
-	      "1csvs4vvycjq2s28n34r8q9pfcn435718b92wnabn9b3lw1sdvxa"))
+	      "0msf479by5vd4qk9p52hq1jvbg4135a390xaxfhk1dbiq1knf581"))
 	    (file-name (string-append name "-" version ".tar.gz"))))
    (build-system cmake-build-system)
    (arguments
