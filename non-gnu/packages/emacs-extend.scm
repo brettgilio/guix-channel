@@ -256,8 +256,8 @@ use M-x company-coq-tutorial to open the tutorial.
      (license license:gpl3+))))
 
 (define-public emacs-company-math
-  (let ((commit "7e7f8c71f57b12f9bcbbf01f2bbcc59343ad76d4")
-        (revision "0"))
+  (let ((commit "600e49449644f6835f9dc3501bc58461999e8ab9")
+        (revision "1"))
     (package
      (name "emacs-company-math")
      (version (git-version "1.3" revision commit))
@@ -268,7 +268,7 @@ use M-x company-coq-tutorial to open the tutorial.
                     (commit commit)))
               (sha256
                (base32
-                "0akqhhjvzsg0lbqx4bbkfkzijidwgi3bb32sxl3yxz7zfm9pbhn2"))
+                "1ps2lpkzn8mjbpcbvvy1qz3xbgrh6951x8y9bsd1fm32drdph9lh"))
               (file-name (git-file-name name version))))
      (build-system emacs-build-system)
      (propagated-inputs
