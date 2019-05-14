@@ -373,8 +373,8 @@ See https://github.com/FStarLang/fstar-mode.el for setup and usage tips.
      (license license:expat))))
 
 (define-public emacs-ccls
-  (let ((commit "3f7a981658ccd71d2e09b9ad2b31a1038e55dcd4")
-        (revision "0"))
+  (let ((commit "2764ddd57b03646f0327ea680a954b4a67450aef")
+        (revision "1"))
     (package
      (name "emacs-ccls")
      (version (git-version "0.0.0" revision commit))
@@ -385,7 +385,7 @@ See https://github.com/FStarLang/fstar-mode.el for setup and usage tips.
                     (commit commit)))
               (sha256
                (base32
-                "1pc0zchwwjdx8n4p1y3s0w9jv2blq7p2ymm9218nrghjjmj2fxnl"))
+                "16427jvzhjy8kpvlgl3qzkzppv98124hkgi8q8pv1h7m46k9lhh3"))
               (file-name (git-file-name name version))))
      (build-system emacs-build-system)
      (propagated-inputs
