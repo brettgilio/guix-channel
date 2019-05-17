@@ -528,3 +528,26 @@ See more at https://github.com/MaskRay/ccls/wiki/Emacs
      (synopsis "Haskell support for lsp-mode")
      (description "Haskell support for lsp-mode")
      (license license:gpl3+))))
+
+(define-public emacs-fancy-battery
+  (let ((commit "9b88ae77a01aa3edc529840338bcb2db7f445822")
+        (revision "0"))
+    (package
+     (name "emacs-fancy-battery")
+     (version (git-version "0.2" revision commit))
+     (source (origin
+              (method git-fetch)
+              (uri (git-reference
+                    (url "https://github.com/lunaryorn/fancy-battery.el.git")
+                    (commit commit)))
+              (sha256
+               (base32
+                "1k6prddw277iszh9hq145yqidwiiy9iqz656rpmqwn5hmr1vakhk"))
+              (file-name (git-file-name name version))))
+     (build-system emacs-build-system)
+     (home-page
+      "https://github.com/lunaryorn/fancy-battery.el")
+     (synopsis "Fancy battery display")
+     (description
+      "Fancy battery display")
+     (license license:gpl3+))))
