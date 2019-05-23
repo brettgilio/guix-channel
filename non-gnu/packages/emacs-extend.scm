@@ -551,3 +551,31 @@ See more at https://github.com/MaskRay/ccls/wiki/Emacs
      (description
       "Fancy battery display")
      (license license:gpl3+))))
+
+(define-public emacs-webpaste
+  (let ((commit "7345c5f62d5cff4d84379eaf5dc8b2bb8bc4f99c")
+        (revision "0"))
+    (package
+     (name "emacs-webpaste")
+     (version (git-version "3.0.1" revision commit))
+     (source (origin
+              (method git-fetch)
+              (uri (git-reference
+                    (url "https://github.com/etu/webpaste.el.git")
+                    (commit commit)))
+              (sha256
+               (base32
+                "00dfp2dyj9cvcvvpsh4g61b37477c8ahfj3xig2x2kgfz15lk89n"))
+              (file-name (git-file-name name version))))
+     (build-system emacs-build-system)
+     (propagated-inputs
+      `(("emacs-request" ,emacs-request)))
+     (home-page "https://github.com/etu/webpaste.el")
+     (synopsis "Paste to pastebin-like services")
+     (description
+      "This mode allows to paste whole buffers or parts of buffers to
+pastebin-like services.  It supports more than one service and will
+failover if one service fails.  More services can easily be added
+over time and prefered services can easily be configured.
+")
+     (license license:gpl3+))))
