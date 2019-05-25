@@ -553,3 +553,42 @@ failover if one service fails.  More services can easily be added
 over time and prefered services can easily be configured.
 ")
      (license license:gpl3+))))
+
+(define-public emacs-lean-mode
+  (let ((commit "9d6b8471e2044310b4cd7cd3213b1fc8f78ec499")
+        (revision "0"))
+    (package
+     (name "emacs-lean-mode")
+     (version (git-version "0.0.0" revision commit))
+     (source (origin
+              (method git-fetch)
+              (uri (git-reference
+                    (url "https://github.com/leanprover/lean-mode.git")
+                    (commit commit)))
+              (sha256
+               (base32
+                "0r8vfklrdw3f11cpk279jg3mnfbqm60m6klisqndkvir7vsrshni"))
+              (file-name (git-file-name name version))))
+     (build-system emacs-build-system)
+     (propagated-inputs
+      `(("emacs-dash" ,emacs-dash)
+	("emacs-company" ,emacs-company)
+	("emacs-cl-lib" ,emacs-cl-lib)
+	("emacs-s" ,emacs-s)
+	("emacs-f" ,emacs-f)
+	("emacs-helm" ,emacs-helm)
+	("emacs-flycheck" ,emacs-flycheck)))
+     (home-page
+      "https://github.com/leanprover/lean-mode")
+     (synopsis "A major mode for the Lean language")
+     (description
+      "Provides a major mode for the Lean programming language.
+
+Provides highlighting, diagnostics, goal visualization,
+and many other useful features for Lean users.
+
+See the README.md for more advanced features and the
+associated keybindings.
+")
+     (license license:asl2.0))))
+
