@@ -592,3 +592,36 @@ associated keybindings.
 ")
      (license license:asl2.0))))
 
+(define-public emacs-cl-lib
+  (package
+  (name "emacs-cl-lib")
+  (version "0.6.1")
+  (source
+    (origin
+      (method url-fetch)
+      (uri (string-append
+             "https://elpa.gnu.org/packages/cl-lib-"
+             version
+             ".el"))
+      (sha256
+        (base32
+          "00w7bw6wkig13pngijh7ns45s1jn5kkbbjaqznsdh6jk5x089j9y"))))
+  (build-system emacs-build-system)
+  (home-page
+    "http://elpa.gnu.org/packages/cl-lib.html")
+  (synopsis
+    "Properly prefixed CL functions and macros")
+  (description
+    "This is a forward compatibility package, which provides (a subset of) the
+features of the cl-lib package introduced in Emacs-24.3, for use on
+previous emacsen (it should work on Emacs≥21 as well as XEmacs).
+
+Make sure this is installed *late* in your `load-path`, i.e. after Emacs's
+built-in .../lisp/emacs-lisp directory, so that if/when you upgrade to
+Emacs-24.3, the built-in version of the file will take precedence, otherwise
+you could get into trouble (although we try to hack our way around the
+problem in case it happens).
+
+This code is largely copied from Emacs-24.3's cl.el, with the alias bindings
+simply reversed.")
+  (license license:gpl3+)))
