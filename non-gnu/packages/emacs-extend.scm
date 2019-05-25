@@ -306,32 +306,6 @@ use M-x company-coq-tutorial to open the tutorial.
       "")
      (license license:gpl3+))))
 
-(define-public emacs-doom-themes
-  (let ((commit "39e6971e81181b86a57f65cd0ea31376203a9756")
-        (revision "0"))
-    (package
-     (name "emacs-doom-themes")
-     (version (git-version "2.1.6" revision commit))
-     (source (origin
-              (method git-fetch)
-              (uri (git-reference
-                    (url "https://github.com/hlissner/emacs-doom-themes.git")
-                    (commit commit)))
-              (sha256
-               (base32
-                "042pzcdhxi2z07jcscgjbaki9nrrm0cbgbbrnymd1r4q8ckkn8l9"))
-              (file-name (git-file-name name version))))
-     (build-system emacs-build-system)
-     (propagated-inputs
-      `(("emacs-all-the-icons" ,emacs-all-the-icons-channel)))
-     (home-page
-      "https://github.com/hlissner/emacs-doom-theme")
-     (synopsis
-      "an opinionated pack of modern color-themes")
-     (description
-      "")
-     (license #f))))
-
 ;; Track master
 (define-public emacs-fstar-mode
   (let ((commit "b2540d287f6ef8036c47cbc80d11a546eee8fc41")
