@@ -651,3 +651,37 @@ simply reversed.")
       "")
      (license license:gpl3+))))
 
+(define-public emacs-packed
+  (let ((commit "c41c3dfda86ae33832ffc146923e2a4675cbacfa")
+        (revision "0"))
+    (package
+     (name "emacs-packed")
+     (version (git-version "3.0.0" revision commit))
+     (source (origin
+              (method git-fetch)
+              (uri (git-reference
+                    (url "https://github.com/emacscollective/packed.git")
+                    (commit commit)))
+              (sha256
+               (base32
+                "1272xmb3l8ddfijqzci3x0kxwibqb0sbkci4rbcv9ba9hpxp4d1v"))
+              (file-name (git-file-name name version))))
+     (build-system emacs-build-system)
+     (home-page
+      "https://github.com/emacscollective/packed")
+     (synopsis
+      "package manager agnostic Emacs Lisp package utilities")
+     (description
+      "Packed provides some package manager agnostic utilities to work
+with Emacs Lisp packages.  As far as Packed is concerned packages
+are collections of Emacs Lisp libraries that are stored in a
+dedicated directory such as a Git repository.  And libraries are
+Emacs Lisp files that provide the correct feature (matching the
+filename).
+
+Where a package manager might depend on metadata, Packed instead
+uses some heuristics to get the same information — that is slower
+and might also fail at times but makes it unnecessary to maintain
+package recipes.
+")
+     (license license:gpl3+))))
