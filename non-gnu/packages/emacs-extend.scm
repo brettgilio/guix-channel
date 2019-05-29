@@ -625,3 +625,29 @@ problem in case it happens).
 This code is largely copied from Emacs-24.3's cl.el, with the alias bindings
 simply reversed.")
   (license license:gpl3+)))
+(define-public emacs-auto-compile
+  (let ((commit "e6bbb1371324c8884af3b201e9adbc9296eb2ff4")
+        (revision "0"))
+    (package
+     (name "emacs-auto-compile")
+     (version (git-version "1.5.1" revision commit))
+     (source (origin
+              (method git-fetch)
+              (uri (git-reference
+                    (url "https://github.com/emacscollective/auto-compile.git")
+                    (commit commit)))
+              (sha256
+               (base32
+                "1jyn7yvbvk7cydy3pzwqlb0yxf5cxdiipa1gnigdk9wdbj68wjjk"))
+              (file-name (git-file-name name version))))
+     (build-system emacs-build-system)
+     (propagated-inputs
+      `(("emacs-packed" ,emacs-packed)))
+     (home-page
+      "https://github.com/emacscollective/auto-compile")
+     (synopsis
+      "automatically compile Emacs Lisp libraries")
+     (description
+      "")
+     (license license:gpl3+))))
+
