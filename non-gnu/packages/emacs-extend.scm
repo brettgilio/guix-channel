@@ -625,6 +625,59 @@ problem in case it happens).
 This code is largely copied from Emacs-24.3's cl.el, with the alias bindings
 simply reversed.")
   (license license:gpl3+)))
+
+(define-public emacs-erc-status-sidebar
+  (let ((commit "ea4189a1dbfe60117359c36e681ad7c389e2968c")
+        (revision "0"))
+    (package
+     (name "emacs-erc-status-sidebar")
+     (version (git-version "0.0.0" revision commit))
+     (source (origin
+              (method git-fetch)
+              (uri (git-reference
+                    (url "https://github.com/drewbarbs/erc-status-sidebar.git")
+                    (commit commit)))
+              (sha256
+               (base32
+                "1hwlhzgx03z8891sblz56zdp8zj0izh72kxykgcnz5rrkyc3vfi3"))
+              (file-name (git-file-name name version))))
+     (build-system emacs-build-system)
+     (propagated-inputs `(("emacs-seq" ,emacs-seq)))
+     (home-page
+      "https://github.com/drewbarbs/erc-status-sidebar")
+     (synopsis
+      "a hexchat-like activity overview for ERC channels")
+     (description
+      "This package is provides a hexchat-like status bar for joined
+channels in ERC.  It relies on the `erc-track' module, and displays
+all the same information erc-track does in the mode line, but in an
+alternative format.
+
+Credit to sidebar.el (https://github.com/sebastiencs/sidebar.el)
+and outline-toc.el (https://github.com/abingham/outline-toc.el),
+from which all the sidebar window management ideas were lifted.
+
+# Setup
+
+To open the ERC status sidebar in the current frame:
+
+M-x erc-status-sidebar-open
+
+Ensure the `erc-track' module is active (a member of
+`erc-modules'). This is the default.
+
+To close the sidebar on the current frame:
+
+M-x erc-status-sidebar-close
+
+Use a prefix argument to close the sidebar on all frames.
+
+To kill the sidebar buffer and close the sidebar on all frames:
+
+M-x erc-status-sidebar-kill
+")
+     (license license:gpl3+))))
+
 (define-public emacs-auto-compile
   (let ((commit "e6bbb1371324c8884af3b201e9adbc9296eb2ff4")
         (revision "0"))
