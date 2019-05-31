@@ -503,7 +503,7 @@ See more at https://github.com/MaskRay/ccls/wiki/Emacs
      (description "Haskell support for lsp-mode")
      (license license:gpl3+))))
 
-(define-public emacs-fancy-battery
+(define-public emacs-fancy-battery-master
   (let ((commit "9b88ae77a01aa3edc529840338bcb2db7f445822")
         (revision "0"))
     (package
