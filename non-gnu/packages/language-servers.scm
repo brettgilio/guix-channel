@@ -18,7 +18,7 @@
   #:use-module (gnu packages llvm))
 
 ;; Modified from https://github.com/trivialfis/guixpkgs
-(define-public ccls
+(define-public ccls-tagged
   (package
    (name "ccls")
    (version "0.20190314.1")
