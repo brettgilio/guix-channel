@@ -221,7 +221,7 @@ modeline easier.
       "This package enables eldoc support when minibuffer is in use.")
      (license license:gpl3+))))
 
-(define-public emacs-company-coq
+(define-public emacs-company-coq-tagged
   (let ((commit "a4e0625725e4f54d202e746bb41b8bc14c14ddef")
         (revision "1"))
     (package
