@@ -66,3 +66,15 @@
       ("python" ,python "tk")
       ("python-language-server"
        ,python-language-server)))))
+
+(define-public meta-cobjc
+  (package
+   (inherit %meta-base)
+   (name "meta-cobjc")
+   (propagated-inputs
+    `(("meta-emacs" ,meta-emacs)
+      ("meta-lsp" ,meta-lsp)
+      ("emacs-ccls" ,emacs-ccls-master)
+      ("ccls" ,ccls-tagged)
+      ("gcc-toolchain" ,gcc-toolchain)))))
+
