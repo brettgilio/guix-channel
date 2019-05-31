@@ -135,7 +135,7 @@ as better scaling of and anti aliasing of the icons.")
      (license
       (list license:expat license:gpl3+ license:silofl1.1 license:asl2.0)))))
 
-(define-public emacs-doom-modeline
+(define-public emacs-doom-modeline-tagged
   (let ((commit "c5226e4aaec89c7abfff5d9e46322b92c008dea2")
         (revision "3"))
     (package
