@@ -39,21 +39,30 @@
    (name "meta-emacs")
    (propagated-inputs
     `(("emacs" ,emacs)
-      ("emacs-all-the-icons" ,emacs-all-the-icons-master)
-      ("emacs-auto-compile" ,emacs-auto-compile-tagged)
+      ("emacs-all-the-icons"
+       ,emacs-all-the-icons-master)
+      ("emacs-auto-compile"
+       ,emacs-auto-compile-tagged)
       ("emacs-company" ,emacs-company)
-      ("emacs-company-quickhelp" ,emacs-company-quickhelp)
-      ("emacs-doom-modeline" ,emacs-doom-modeline-tagged)
-      ("emacs-fancy-battery" ,emacs-fancy-battery-master)
+      ("emacs-company-quickhelp"
+       ,emacs-company-quickhelp)
+      ("emacs-doom-modeline"
+       ,emacs-doom-modeline-tagged)
+      ("emacs-erc-status-sidebar"
+       ,emacs-erc-status-sidebar-master)
+      ("emacs-fancy-battery"
+       ,emacs-fancy-battery-master)
       ("emacs-gitpatch" ,emacs-gitpatch)
       ("emacs-guix" ,emacs-guix)
       ("emacs-helm" ,emacs-helm)
       ("emacs-magit" ,emacs-magit)
-      ("emacs-magit-popup" ,emacs-magit-popup)
+      ("emacs-magit-popup"
+       ,emacs-magit-popup)
       ("emacs-nix-mode" ,emacs-nix-mode)
       ("emacs-pdf-tools" ,emacs-pdf-tools)
       ("emacs-use-package" ,emacs-use-package)
-      ("emacs-webpaste" ,emacs-webpaste-tagged)
+      ("emacs-webpaste"
+       ,emacs-webpaste-tagged)
       ("emacs-yasnippet" ,emacs-yasnippet)))))
 
 (define-public meta-lsp
