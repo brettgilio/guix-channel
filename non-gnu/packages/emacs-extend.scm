@@ -346,7 +346,7 @@ See https://github.com/FStarLang/fstar-mode.el for setup and usage tips.
 ")
      (license license:expat))))
 
-(define-public emacs-ccls
+(define-public emacs-ccls-master
   (let ((commit "2764ddd57b03646f0327ea680a954b4a67450aef")
         (revision "1"))
     (package
