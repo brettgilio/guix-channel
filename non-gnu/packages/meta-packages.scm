@@ -78,3 +78,23 @@
       ("ccls" ,ccls-tagged)
       ("gcc-toolchain" ,gcc-toolchain)))))
 
+(define-public meta-ocaml
+  (package
+   (inherit %meta-base)
+   (name "meta-ocaml")
+   (propagated-inputs
+    `(("meta-emacs" ,meta-emacs)
+      ("darcs" ,darcs)
+      ("emacs-tuareg" ,emacs-tuareg)
+      ("gcc-toolchain" ,gcc-toolchain)
+      ("m4" ,m4)
+      ("make" ,gnu-make)
+      ("mercurial" ,mercurial)
+      ("ocaml" ,ocaml)
+      ("ocaml-base" ,ocaml-base)
+      ("ocaml-findlib" ,ocaml-findlib)
+      ("ocaml-merlin" ,ocaml-merlin)
+      ("ocaml-utop" ,ocaml-utop)
+      ("opam" ,opam)
+      ("rsync" ,rsync)))))
+
