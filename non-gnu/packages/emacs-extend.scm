@@ -152,7 +152,7 @@ as better scaling of and anti aliasing of the icons.")
               (file-name (git-file-name name version))))
      (build-system emacs-build-system)
      (propagated-inputs
-      `(("emacs-all-the-icons" ,emacs-all-the-icons-channel)
+      `(("emacs-all-the-icons" ,emacs-all-the-icons-master)
 	("emacs-shrink-path" ,emacs-shrink-path)
 	("emacs-eldoc-eval" ,emacs-eldoc-eval)
 	("emacs-dash" ,emacs-dash)))
