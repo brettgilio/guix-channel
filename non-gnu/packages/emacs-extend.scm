@@ -95,7 +95,7 @@
 
 ;; The Guix-master build lacks proper reference to `emacs-font-lock+'
 ;; XXX: https://github.com/domtronn/all-the-icons.el/issues/105
-(define-public emacs-all-the-icons-channel
+(define-public emacs-all-the-icons-master
   (let ((commit "f996fafa5b2ea072d0ad1df9cd98acc75820f530")
         (revision "1"))
     (package
