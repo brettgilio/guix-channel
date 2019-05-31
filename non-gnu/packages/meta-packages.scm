@@ -98,3 +98,14 @@
       ("opam" ,opam)
       ("rsync" ,rsync)))))
 
+(define-public meta-coq
+  (package
+   (inherit %meta-base)
+   (name "meta-coq")
+   (propagated-inputs
+    `(("meta-emacs" ,meta-emacs)
+      ("coq" ,coq)
+      ("emacs-company-coq"
+       ,emacs-company-coq-tagged)
+      ("proof-general"
+       ,proof-general-master)))))
