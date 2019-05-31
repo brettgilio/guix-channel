@@ -678,7 +678,7 @@ M-x erc-status-sidebar-kill
 ")
      (license license:gpl3+))))
 
-(define-public emacs-auto-compile
+(define-public emacs-auto-compile-tagged
   (let ((commit "e6bbb1371324c8884af3b201e9adbc9296eb2ff4")
         (revision "0"))
     (package
