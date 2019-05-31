@@ -526,7 +526,7 @@ See more at https://github.com/MaskRay/ccls/wiki/Emacs
       "Fancy battery display")
      (license license:gpl3+))))
 
-(define-public emacs-webpaste
+(define-public emacs-webpaste-tagged
   (let ((commit "7345c5f62d5cff4d84379eaf5dc8b2bb8bc4f99c")
         (revision "0"))
     (package
