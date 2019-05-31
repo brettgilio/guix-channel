@@ -72,7 +72,7 @@
   #:use-module (srfi srfi-1)
   #:use-module (ice-9 match))
 
-(define-public emacs-font-lock+
+(define-public emacs-font-lock+-master
   (let ((commit "f2c1ddcd4c9d581bd32be88fad026b49f98b6541")
         (revision "0"))
     (package
@@ -120,7 +120,7 @@
      (propagated-inputs
       `(("f" ,emacs-f)
 	("memoize" ,emacs-memoize)
-	("emacs-font-lock+" ,emacs-font-lock+)))
+	("emacs-font-lock+" ,emacs-font-lock+-master)))
      (home-page "https://github.com/domtronn/all-the-icons.el")
      (synopsis "Collect icon fonts and propertize them within Emacs")
      (description "All-the-icons is a utility package to collect various icon
@@ -153,8 +153,8 @@ as better scaling of and anti aliasing of the icons.")
      (build-system emacs-build-system)
      (propagated-inputs
       `(("emacs-all-the-icons" ,emacs-all-the-icons-master)
-	("emacs-shrink-path" ,emacs-shrink-path)
-	("emacs-eldoc-eval" ,emacs-eldoc-eval)
+	("emacs-shrink-path" ,emacs-shrink-path-tagged)
+	("emacs-eldoc-eval" ,emacs-eldoc-eval-master)
 	("emacs-dash" ,emacs-dash)))
      (home-page
       "https://github.com/seagle0128/doom-modeline")
@@ -163,7 +163,7 @@ as better scaling of and anti aliasing of the icons.")
       "")
      (license license:gpl3+))))
     
-(define-public emacs-shrink-path
+(define-public emacs-shrink-path-tagged
   (let ((commit "9b8cfb59a2dcee8b39b680ab9adad5ecb1f53c0b")
         (revision "0"))
     (package
@@ -198,7 +198,7 @@ modeline easier.
        (license license:gpl3+))))
 
 ;; Track master
-(define-public emacs-eldoc-eval
+(define-public emacs-eldoc-eval-master
   (let ((commit "a67fe3637378dcb6c5f9e140acc8131f0d2346b3")
         (revision "1"))
     (package
@@ -238,7 +238,7 @@ modeline easier.
               (file-name (git-file-name name version))))
      (build-system emacs-build-system)
      (propagated-inputs
-      `(("emacs-company-math" ,emacs-company-math)
+      `(("emacs-company-math" ,emacs-company-math-master)
 	("emacs-company" ,emacs-company)
 	("emacs-yasnippet" ,emacs-yasnippet)
 	("emacs-dash" ,emacs-dash)))
@@ -255,7 +255,7 @@ use M-x company-coq-tutorial to open the tutorial.
 ")
      (license license:gpl3+))))
 
-(define-public emacs-company-math
+(define-public emacs-company-math-master
   (let ((commit "600e49449644f6835f9dc3501bc58461999e8ab9")
         (revision "1"))
     (package
@@ -274,7 +274,7 @@ use M-x company-coq-tutorial to open the tutorial.
      (propagated-inputs
       `(("emacs-company" ,emacs-company)
 	("emacs-math-symbol-lists"
-	 ,emacs-math-symbol-lists)))
+	 ,emacs-math-symbol-lists-master)))
      (home-page
       "https://github.com/vspinu/company-math")
      (synopsis
@@ -282,7 +282,7 @@ use M-x company-coq-tutorial to open the tutorial.
      (description "No description available.")
      (license license:gpl3+))))
 
-(define-public emacs-math-symbol-lists
+(define-public emacs-math-symbol-lists-master
   (let ((commit "f5eea51926b3afd448c661e1d93c1bd0a2194561")
         (revision "1"))
     (package
@@ -307,7 +307,7 @@ use M-x company-coq-tutorial to open the tutorial.
      (license license:gpl3+))))
 
 ;; Track master
-(define-public emacs-fstar-mode
+(define-public emacs-fstar-mode-master
   (let ((commit "b2540d287f6ef8036c47cbc80d11a546eee8fc41")
         (revision "2"))
     (package
@@ -326,7 +326,7 @@ use M-x company-coq-tutorial to open the tutorial.
      (propagated-inputs
       `(("emacs-dash" ,emacs-dash)
 	("emacs-company" ,emacs-company)
-	("emacs-quick-peek" ,emacs-quick-peek)
+	("emacs-quick-peek" ,emacs-quick-peek-master)
 	("emacs-yasnippet" ,emacs-yasnippet)
 	("emacs-flycheck" ,emacs-flycheck)
 	("emacs-company-quickhelp" ,emacs-company-quickhelp)))
@@ -375,7 +375,7 @@ See more at https://github.com/MaskRay/ccls/wiki/Emacs
 ")
      (license license:expat))))
 
-(define-public emacs-quick-peek
+(define-public emacs-quick-peek-master
   (let ((commit "fd8a6c81422932539d221f39f18c90f2811f2dd9")
         (revision "0"))
     (package
@@ -397,7 +397,7 @@ See more at https://github.com/MaskRay/ccls/wiki/Emacs
       "")
      (license license:gpl3+))))
 
-(define-public emacs-fsharp-mode
+(define-public emacs-fsharp-mode-tagged
   (let ((commit "5d8d8dd6d5fbb2d23f1e773a77bde4ffc187ebe5")
         (revision "0"))
     (package
@@ -427,7 +427,7 @@ See more at https://github.com/MaskRay/ccls/wiki/Emacs
      (description "F# mode for Emacs.")
      (license license:asl2.0))))
 
-(define-public emacs-md4rd
+(define-public emacs-md4rd-master
   (let ((commit "443c8059af4925d11c93a1293663165c52472f08")
         (revision "1"))
     (package
@@ -455,7 +455,7 @@ See more at https://github.com/MaskRay/ccls/wiki/Emacs
       "This package allows to read Reddit from within Emacs interactively.")
      (license license:gpl3+))))
 
-(define-public emacs-rust-mode
+(define-public emacs-rust-mode-tagged
   (let ((commit "106aeab800fb3404baf231845d3e3549ec235afa")
         (revision "1"))
     (package
@@ -478,7 +478,7 @@ See more at https://github.com/MaskRay/ccls/wiki/Emacs
      (description "")
      (license #f))))
 
-(define-public emacs-lsp-haskell
+(define-public emacs-lsp-haskell-master
   (let ((commit "33e3ac438338b0a78971cd26aa919482d290c51b")
         (revision "0"))
     (package
@@ -554,7 +554,7 @@ over time and prefered services can easily be configured.
 ")
      (license license:gpl3+))))
 
-(define-public emacs-lean-mode
+(define-public emacs-lean-mode-master
   (let ((commit "9d6b8471e2044310b4cd7cd3213b1fc8f78ec499")
         (revision "0"))
     (package
@@ -626,7 +626,7 @@ This code is largely copied from Emacs-24.3's cl.el, with the alias bindings
 simply reversed.")
   (license license:gpl3+)))
 
-(define-public emacs-erc-status-sidebar
+(define-public emacs-erc-status-sidebar-master
   (let ((commit "ea4189a1dbfe60117359c36e681ad7c389e2968c")
         (revision "0"))
     (package
@@ -695,7 +695,7 @@ M-x erc-status-sidebar-kill
               (file-name (git-file-name name version))))
      (build-system emacs-build-system)
      (propagated-inputs
-      `(("emacs-packed" ,emacs-packed)))
+      `(("emacs-packed" ,emacs-packed-tagged)))
      (home-page
       "https://github.com/emacscollective/auto-compile")
      (synopsis
@@ -704,7 +704,7 @@ M-x erc-status-sidebar-kill
       "")
      (license license:gpl3+))))
 
-(define-public emacs-packed
+(define-public emacs-packed-tagged
   (let ((commit "c41c3dfda86ae33832ffc146923e2a4675cbacfa")
         (revision "0"))
     (package
