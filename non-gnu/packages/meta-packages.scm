@@ -106,6 +106,7 @@
    (propagated-inputs
     `(("meta-emacs" ,meta-emacs)
       ("darcs" ,darcs)
+      ("dune" ,dune)
       ("emacs-tuareg" ,emacs-tuareg)
       ("gcc-toolchain" ,gcc-toolchain)
       ("m4" ,m4)
