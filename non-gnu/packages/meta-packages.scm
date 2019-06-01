@@ -24,7 +24,7 @@
 (define %meta-base
   (package
     (name #f)
-    (version "4")
+    (version "5")
     (source #f)
     (build-system trivial-build-system)
     (arguments '(#:builder (begin (mkdir %output) #t)))
