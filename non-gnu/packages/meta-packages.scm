@@ -95,9 +95,11 @@
    (propagated-inputs
     `(("meta-emacs" ,meta-emacs)
       ("meta-lsp" ,meta-lsp)
+      ("bear" ,bear)
       ("emacs-ccls" ,emacs-ccls-master)
       ("ccls" ,ccls-tagged)
-      ("gcc-toolchain" ,gcc-toolchain)))))
+      ("gcc-toolchain" ,gcc-toolchain)
+      ("make" ,gnu-make)))))
 
 (define-public meta-ocaml
   (package
