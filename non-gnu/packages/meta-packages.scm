@@ -126,7 +126,7 @@
    (name "meta-coq")
    (propagated-inputs
     `(("meta-emacs" ,meta-emacs)
-      ("coq" ,coq)
+      ("coq" ,coq-tagged)
       ("emacs-company-coq"
        ,emacs-company-coq-tagged)
       ("proof-general"
