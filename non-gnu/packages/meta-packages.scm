@@ -46,6 +46,8 @@
       ("emacs-company" ,emacs-company)
       ("emacs-company-quickhelp"
        ,emacs-company-quickhelp)
+      ("emacs-desktop-environment"
+       ,emacs-desktop-environment)
       ("emacs-doom-modeline"
        ,emacs-doom-modeline-tagged)
       ("emacs-erc-status-sidebar"
