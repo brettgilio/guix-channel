@@ -9,6 +9,7 @@
   #:use-module (gnu packages build-tools)
   #:use-module (gnu packages commencement)
   #:use-module (gnu packages coq)
+  #:use-module (gnu packages documentation)
   #:use-module (gnu packages emacs)
   #:use-module (gnu packages emacs-xyz)
   #:use-module (gnu packages haskell-apps)
@@ -17,6 +18,7 @@
   #:use-module (gnu packages python)
   #:use-module (gnu packages python-xyz)
   #:use-module (gnu packages rsync)
+  #:use-module (gnu packages valgrind)
   #:use-module (gnu packages version-control)
   #:use-module (non-gnu packages coq-extend)
   #:use-module (non-gnu packages emacs-extend)
@@ -97,10 +99,13 @@
     `(("meta-emacs" ,meta-emacs)
       ("meta-lsp" ,meta-lsp)
       ("bear" ,bear)
-      ("emacs-ccls" ,emacs-ccls-master)
       ("ccls" ,ccls-tagged)
+      ("doxygen" ,doxygen)
+      ("emacs-ccls" ,emacs-ccls-master)
       ("gcc-toolchain" ,gcc-toolchain)
-      ("make" ,gnu-make)))))
+      ("make" ,gnu-make)
+      ("valgrind" ,valgrind)
+      ("valgrind" ,valgrind "doc")))))
 
 (define-public meta-ocaml
   (package
