@@ -6,6 +6,7 @@
   #:use-module (guix git-download)
   #:use-module (guix build-system trivial)
   #:use-module (gnu packages base)
+  #:use-module (gnu packages build-tools)
   #:use-module (gnu packages commencement)
   #:use-module (gnu packages coq)
   #:use-module (gnu packages emacs)
