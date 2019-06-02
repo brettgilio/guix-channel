@@ -64,6 +64,7 @@
       ("emacs-magit-popup"
        ,emacs-magit-popup)
       ("emacs-nix-mode" ,emacs-nix-mode)
+      ("emacs-nov-el" ,emacs-nov-el)
       ("emacs-pdf-tools" ,emacs-pdf-tools)
       ("emacs-use-package" ,emacs-use-package)
       ("emacs-webpaste"
