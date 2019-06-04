@@ -479,8 +479,8 @@ See more at https://github.com/MaskRay/ccls/wiki/Emacs
      (license #f))))
 
 (define-public emacs-lsp-haskell-master
-  (let ((commit "33e3ac438338b0a78971cd26aa919482d290c51b")
-        (revision "0"))
+  (let ((commit "8f2dbb6e827b1adce6360c56f795f29ecff1d7f6")
+        (revision "1"))
     (package
      (name "emacs-lsp-haskell")
      (version (git-version "0.0.0" revision commit))
@@ -491,7 +491,7 @@ See more at https://github.com/MaskRay/ccls/wiki/Emacs
                     (commit commit)))
               (sha256
                (base32
-                "1ihc6djxsdrd0q9f79bs0qwxxhw3bnw1kxw2rq92drfnypqbiqcq"))
+                "00j6d5rpsi7h5jz54zpjmbpg38fda4xy67xc4x67r834493ldzlq"))
               (file-name (git-file-name name version))))
      (build-system emacs-build-system)
      (propagated-inputs
