@@ -24,8 +24,8 @@
 
 ;; Stop tracking tags, and track master instead
 (define-public proof-general-master
-  (let ((commit "0058999ac42d7d1b3ee093aa5a4e8956d1eb8a9c")
-        (revision "4"))
+  (let ((commit "9ebfbb6abbd5480b434ceadebec824d7c8804e73")
+        (revision "5"))
     (package
      (name "proof-general")
      (version (git-version "4.4" revision commit))
@@ -36,7 +36,7 @@
                     (commit commit)))
               (sha256
                (base32
-                "0q4qm0vi08wrl0wdlz5fhyfj8g4w8l1k5jyhfflig7pnjdw19lqa"))
+                "1p7i3ms6lny3yr7wrdpazchxryai329vx43qgvbqdrh51kdxyfvv"))
               (file-name (git-file-name name version))))
      (build-system gnu-build-system)
      (native-inputs
@@ -46,7 +46,7 @@
      (inputs
       `(("host-emacs" ,emacs)
 	("perl" ,perl)
-	("coq" ,coq)))
+	("coq" ,coq-tagged)))
      (arguments
       `(#:tests? #f  ; no check target
 	#:make-flags (list (string-append "PREFIX=" %output)
