@@ -140,3 +140,12 @@
        ,emacs-company-coq-tagged)
       ("proof-general"
        ,proof-general-master)))))
+
+(define-public meta-rust
+  (package
+   (inherit %meta-base)
+   (name "meta-rust")
+   (propagated-inputs
+    `(("meta-emacs" ,meta-emacs)
+      ("meta-lsp" ,meta-lsp)
+      ("emacs-rust-mode" ,emacs-rust-mode-tagged)))))
