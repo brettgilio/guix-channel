@@ -80,14 +80,14 @@
 (define-public hylang
   (package
    (name "hylang")
-   (version "0.16.0")
+   (version "0.17.0")
    (source
     (origin
      (method url-fetch)
      (uri (pypi-uri "hy" version))
      (sha256
       (base32
-       "00lq38ppikrpyw38fn5iy9iwrsamsv22507cp146dsjbzkwjpzrd"))))
+       "1gdbqsirsdxj320wnp7my5awzs1kfs6m4fqmkzbd1zd47qzj0zfi"))))
    (build-system python-build-system)
    (arguments
      `(#:tests? #f))
