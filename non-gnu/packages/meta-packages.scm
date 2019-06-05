@@ -124,8 +124,13 @@
       ("mercurial" ,mercurial)
       ("ocaml" ,ocaml)
       ("ocaml-base" ,ocaml-base)
+      ("ocaml-core" ,ocaml-core)
+      ("ocaml-ctypes" ,ocaml-ctypes)
       ("ocaml-findlib" ,ocaml-findlib)
       ("ocaml-merlin" ,ocaml-merlin)
+      ("ocaml-ounit" ,ocaml-ounit)
+      ("oocaml-parsexp"
+       ,ocaml-parsexp)
       ("ocaml-utop" ,ocaml-utop)
       ("opam" ,opam)
       ("rsync" ,rsync)))))
