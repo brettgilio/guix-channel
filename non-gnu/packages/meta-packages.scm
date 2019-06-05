@@ -179,3 +179,12 @@
       ("emacs-lsp-haskell"
        ,emacs-lsp-haskell-master)))))  
 
+(define-public meta-lean
+  (package
+   (inherit %meta-base)
+   (name "meta-lean")
+   (propagated-inputs
+    `(("meta-emacs" ,meta-emacs)
+      ("emacs-lean-mode"
+       ,emacs-lean-mode-master)))))
+
