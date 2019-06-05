@@ -188,3 +188,11 @@
       ("emacs-lean-mode"
        ,emacs-lean-mode-master)))))
 
+(define-public meta-r
+  (package
+   (inherit %meta-base)
+   (name "meta-r")
+   (propagated-inputs
+    `(("meta-emacs" ,meta-emacs)
+      ("emacs-ess" ,emacs-ess)
+      ("r" ,r)))))  
