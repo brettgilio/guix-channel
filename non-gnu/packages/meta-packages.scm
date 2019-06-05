@@ -160,3 +160,12 @@
       ("emacs-fsharp-mode"
        ,emacs-fsharp-mode-tagged)))))
 
+(define-public meta-fstar
+  (package
+   (inherit %meta-base)
+   (name "meta-fstar")
+   (propagated-inputs
+    `(("meta-emacs" ,meta-emacs)
+      ("emacs-fstar-mode"
+       ,emacs-fstar-mode-master)))))  
+
