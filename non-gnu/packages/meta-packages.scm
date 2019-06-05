@@ -150,3 +150,13 @@
     `(("meta-emacs" ,meta-emacs)
       ("meta-lsp" ,meta-lsp)
       ("emacs-rust-mode" ,emacs-rust-mode-tagged)))))
+
+(define-public meta-fsharp
+  (package
+   (inherit %meta-base)
+   (name "meta-fsharp")
+   (propagated-inputs
+    `(("meta-emacs" ,meta-emacs)
+      ("emacs-fsharp-mode"
+       ,emacs-fsharp-mode-tagged)))))
+
