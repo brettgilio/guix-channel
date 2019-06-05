@@ -18,6 +18,7 @@
   #:use-module (gnu packages python)
   #:use-module (gnu packages python-xyz)
   #:use-module (gnu packages rsync)
+  #:use-module (gnu packages statistics)
   #:use-module (gnu packages valgrind)
   #:use-module (gnu packages version-control)
   #:use-module (non-gnu packages coq-extend)
@@ -27,7 +28,7 @@
 (define %meta-base
   (package
     (name #f)
-    (version "10")
+    (version "11")
     (source #f)
     (build-system trivial-build-system)
     (arguments '(#:builder (begin (mkdir %output) #t)))
