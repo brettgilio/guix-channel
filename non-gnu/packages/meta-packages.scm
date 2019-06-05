@@ -169,3 +169,13 @@
       ("emacs-fstar-mode"
        ,emacs-fstar-mode-master)))))  
 
+(define-public meta-haskell
+  (package
+   (inherit %meta-base)
+   (name "meta-haskell")
+   (propagated-inputs
+    `(("meta-emacs" ,meta-emacs)
+      ("meta-lsp" ,meta-lsp)
+      ("emacs-lsp-haskell"
+       ,emacs-lsp-haskell-master)))))  
+
