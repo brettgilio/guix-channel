@@ -201,3 +201,13 @@
     `(("meta-emacs" ,meta-emacs)
       ("emacs-ess" ,emacs-ess)
       ("r" ,r)))))  
+
+(define-public meta-racket
+  (package
+   (inherit %meta-base)
+   (name "meta-racket")
+   (propagated-inputs
+    `(("meta-emacs" ,meta-emacs)
+      ("emacs-racket-mode"
+       ,emacs-racket-mode-master)
+      ("racket" ,racket-tagged)))))
