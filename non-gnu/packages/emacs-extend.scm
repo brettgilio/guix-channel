@@ -771,3 +771,40 @@ package recipes.
 @item Thorough font-lock and indent.
 @end itemize\n")
       (license license:gpl3+))))
+
+(define-public emacs-dashboard-tagged
+  (let ((commit "5b66b65c4c7536f43e8e58b3f7055e5bd6381cda")
+        (revision "0"))
+    (package
+     (name "emacs-dashboard")
+     (version (git-version "1.6.0" revision commit))
+     (source
+      (origin
+       (method git-fetch)
+       (uri (git-reference
+	     (url "https://github.com/emacs-dashboard/emacs-dashboard.git")
+	     (commit commit)))
+       (file-name (git-file-name name version))
+       (sha256
+	(base32
+	 "1g6g8vad1kdmv1zxp95a8sn70idl26isqjb3xk1r95pqnx1cn591"))))
+     (build-system emacs-build-system)
+     (propagated-inputs
+      `(("emacs-page-break-lines" ,emacs-page-break-lines)))
+     (arguments
+      '(#:include '("\\.el$" "\\.txt$" "\\.png$")
+	#:phases
+	(modify-phases %standard-phases
+		       (add-after 'unpack 'patch-dashboard-widgets
+				  ;; This phase fixes compilation error.
+				  (lambda _
+				    (chmod "dashboard-widgets.el" #o666)
+				    (emacs-substitute-variables "dashboard-widgets.el"
+								("dashboard-init-info"
+								 '(format "Loaded in %s" (emacs-init-time))))
+				    #t)))))
+     (home-page "https://github.com/rakanalh/emacs-dashboard")
+     (synopsis "Startup screen extracted from Spacemacs")
+     (description "This package provides an extensible Emacs dashboard, with
+sections for bookmarks, projectil projects, org-agenda and more. ")
+     (license license:gpl3+))))
