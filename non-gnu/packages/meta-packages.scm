@@ -51,6 +51,7 @@
       ("emacs-company" ,emacs-company)
       ("emacs-company-quickhelp"
        ,emacs-company-quickhelp)
+      ("emacs-dashboard" ,emacs-dashboard)
       ("emacs-desktop-environment"
        ,emacs-desktop-environment)
       ("emacs-doom-modeline"
