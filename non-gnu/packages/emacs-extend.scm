@@ -738,3 +738,36 @@ and might also fail at times but makes it unnecessary to maintain
 package recipes.
 ")
      (license license:gpl3+))))
+
+(define-public emacs-racket-mode-master
+  (let ((commit "efba679bdb9d024c36024945da4518663f6f8f15")
+        (revision "3"))
+    (package
+      (name "emacs-racket-mode")
+      (version (git-version "0.0.0" revision commit))
+      (source
+       (origin
+         (method git-fetch)
+         (uri (git-reference
+	       (url "https://github.com/greghendershott/racket-mode.git")
+               (commit commit)))
+         (file-name (git-file-name name version))
+         (sha256
+          (base32
+           "0h4g45ixdl0x1izpac99amz63c9sb4i45k7qwr0m4kk6jly0c5hd"))))
+      (build-system emacs-build-system)
+      (arguments
+       `(#:include '("\\.el$" "\\.rkt$")))
+      (propagated-inputs
+       `(("emacs-faceup" ,emacs-faceup)
+         ("emacs-s" ,emacs-s)))
+      (home-page "https://github.com/greghendershott/racket-mode")
+      (synopsis "Major mode for Racket language")
+      (description "@code{racket-mode} provides:
+
+@itemize
+@item Focus on Racket (not various Schemes).
+@item Follow DrRacket concepts where applicable.
+@item Thorough font-lock and indent.
+@end itemize\n")
+      (license license:gpl3+))))
