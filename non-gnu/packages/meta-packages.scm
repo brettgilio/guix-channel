@@ -23,12 +23,13 @@
   #:use-module (gnu packages version-control)
   #:use-module (non-gnu packages coq-extend)
   #:use-module (non-gnu packages emacs-extend)
-  #:use-module (non-gnu packages language-servers))
+  #:use-module (non-gnu packages language-servers)
+  #:use-module (non-gnu packages racket-extend))
 
 (define %meta-base
   (package
     (name #f)
-    (version "12")
+    (version "13")
     (source #f)
     (build-system trivial-build-system)
     (arguments '(#:builder (begin (mkdir %output) #t)))
