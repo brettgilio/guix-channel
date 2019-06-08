@@ -117,6 +117,11 @@ productive, customizable lisp based systems.")
      (home-page "https://github.com/stumpwm/stumpwm")
      (license license:gpl2+)
      (properties `((cl-source-variant . ,(delay cl-stumpwm)))))))
+
+(define-public stumpwm-system
+  (package
+   (inherit stumpwm-master)
+   (name "stumpwm-system")))
   
 (define-public sbcl-clx-master
   (let ((commit "4b9c2026c98e81af5734106dc19a6609c2cbe5ab")
