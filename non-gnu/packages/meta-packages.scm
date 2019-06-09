@@ -151,6 +151,7 @@
    (propagated-inputs
     `(("meta-emacs" ,meta-emacs)
       ("coq" ,coq-tagged)
+      ("coq-mathcomp" ,coq-mathcomp-tagged)
       ("emacs-company-coq"
        ,emacs-company-coq-tagged)
       ("proof-general"
