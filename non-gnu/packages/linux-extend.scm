@@ -41,7 +41,7 @@
 (define-public iwlwifi-firmware-nonfree
   (package
    (name "iwlwifi-firmware-nonfree")
-   (version "711d3297bac870af42088a467459a0634c1970ca")
+   (version "1884732e01bec25affbd5d3366b187b757b095db")
    (source (origin
 	    (method git-fetch)
 	    (uri (git-reference
