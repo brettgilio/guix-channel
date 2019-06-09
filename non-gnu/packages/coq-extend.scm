@@ -65,3 +65,48 @@ provers.")
 
 (define-public coq-tagged
   (deprecated-package "coq" coq))
+
+(define-public coq-mathcomp-tagged
+  (let ((commit "748d716efb2f2f75946c8386e441ce1789806a39")
+        (revision "0"))
+    (package
+     (name "coq-mathcomp")
+     (version (git-version "1.9.0" revision commit))
+     (source (origin
+              (method git-fetch)
+              (uri (git-reference
+                    (url "https://github.com/math-comp/math-comp.git")
+                    (commit commit)))
+              (sha256
+               (base32
+                "19dk4nbx3rrnlnkk4kvakbsafv2saawhp4z9p67fmilc6q7aydq0"))
+              (file-name (git-file-name name version))))
+     (build-system gnu-build-system)
+     (native-inputs
+      `(("ocaml" ,ocaml)
+	("which" ,which)
+	("coq" ,coq)))
+     (arguments
+      `(#:tests? #f             ; no need to test formally-verified programs :)
+	#:phases
+	(modify-phases %standard-phases
+		       (delete 'configure)
+		       (add-before 'build 'chdir
+				   (lambda _ (chdir "mathcomp") #t))
+		       (replace 'install
+				(lambda* (#:key outputs #:allow-other-keys)
+				  (setenv "COQLIB" (string-append (assoc-ref outputs "out") "/lib/coq/"))
+				  (invoke "make" "-f" "Makefile.coq"
+					  (string-append "COQLIB=" (assoc-ref outputs "out")
+							 "/lib/coq/")
+					  "install"))))))
+     (home-page "https://math-comp.github.io/math-comp/")
+     (synopsis "Mathematical Components for Coq")
+     (description "Mathematical Components for Coq has its origins in the formal
+proof of the Four Colour Theorem.  Since then it has grown to cover many areas
+of mathematics and has been used for large scale projects like the formal proof
+of the Odd Order Theorem.
+
+The library is written using the Ssreflect proof language that is an integral
+part of the distribution.")
+     (license license:cecill-b))))
