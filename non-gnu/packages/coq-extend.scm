@@ -23,10 +23,9 @@
   #:use-module (guix utils)
   #:use-module ((srfi srfi-1) #:hide (zip)))
 
-;; Stop tracking tags, and track master instead
 (define-public proof-general-master
-  (let ((commit "9ebfbb6abbd5480b434ceadebec824d7c8804e73")
-        (revision "5"))
+  (let ((commit "89a6166a2ee61ff9cc84ccffe681a275c64c6856")
+        (revision "6"))
     (package
      (name "proof-general")
      (version (git-version "4.4" revision commit))
@@ -37,7 +36,7 @@
                     (commit commit)))
               (sha256
                (base32
-                "1p7i3ms6lny3yr7wrdpazchxryai329vx43qgvbqdrh51kdxyfvv"))
+                "0gb0k4d5aiazm59q1l4s17v4igb82w91za2s7z1iib2rb5a8kr6w"))
               (file-name (git-file-name name version))))
      (build-system gnu-build-system)
      (native-inputs
