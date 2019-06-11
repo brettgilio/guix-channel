@@ -398,11 +398,11 @@ See more at https://github.com/MaskRay/ccls/wiki/Emacs
      (license license:gpl3+))))
 
 (define-public emacs-fsharp-mode-tagged
-  (let ((commit "5d8d8dd6d5fbb2d23f1e773a77bde4ffc187ebe5")
-        (revision "0"))
+  (let ((commit "da164a1bc29891530ea1f890982f7bd2541aa0ab")
+        (revision "2"))
     (package
      (name "emacs-fsharp-mode")
-     (version (git-version "1.9.13" revision commit))
+     (version (git-version "1.9.14" revision commit))
      (source (origin
               (method git-fetch)
               (uri (git-reference
@@ -410,7 +410,7 @@ See more at https://github.com/MaskRay/ccls/wiki/Emacs
                     (commit commit)))
               (sha256
                (base32
-                "0wkqff126gpfzs0nvfvzkgxi9m5npl23j2pq8s9ssnkwlvk7h0jh"))
+                "1p395dxzpksp0y9j83h9841zqmmp6pxs715yfb6q44m332bl9is4"))
               (file-name (git-file-name name version))))
      (build-system emacs-build-system)
      (propagated-inputs
