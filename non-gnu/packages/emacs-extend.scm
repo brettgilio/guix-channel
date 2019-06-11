@@ -283,8 +283,8 @@ use M-x company-coq-tutorial to open the tutorial.
      (license license:gpl3+))))
 
 (define-public emacs-math-symbol-lists-master
-  (let ((commit "f5eea51926b3afd448c661e1d93c1bd0a2194561")
-        (revision "1"))
+  (let ((commit "dc7531cff0c845d5470a50c24d5d7309b2ced7eb")
+        (revision "2"))
     (package
      (name "emacs-math-symbol-lists")
      (version (git-version "1.2.1" revision commit))
@@ -295,7 +295,7 @@ use M-x company-coq-tutorial to open the tutorial.
                     (commit commit)))
               (sha256
                (base32
-                "0hj2jnnlxm8vmmljmnhzbkdfpr2g6gr6aka66g8zbr5b7hkdjkfd"))
+                "094m21i9rns6m59cmhxcivxxafbg52w8f8na4y3v47aq67zmhhqm"))
               (file-name (git-file-name name version))))
      (build-system emacs-build-system)
      (home-page
