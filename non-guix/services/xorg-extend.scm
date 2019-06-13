@@ -1,0 +1,42 @@
+(define-module (non-guix services xorg-extend)
+  #:use-module (gnu artwork)
+  #:use-module (gnu services)
+  #:use-module (gnu services shepherd)
+  #:use-module (gnu system pam)
+  #:use-module (gnu system keyboard)
+  #:use-module (gnu services base)
+  #:use-module (gnu services dbus)
+  #:use-module ((gnu packages base) #:select (canonical-package))
+  #:use-module (gnu packages guile)
+  #:use-module (gnu packages xorg)
+  #:use-module (gnu packages fonts)
+  #:use-module (gnu packages gl)
+  #:use-module (gnu packages glib)
+  #:use-module (gnu packages display-managers)
+  #:use-module (gnu packages freedesktop)
+  #:use-module (gnu packages gnustep)
+  #:use-module (gnu packages gnome)
+  #:use-module (gnu packages admin)
+  #:use-module (gnu packages bash)
+  #:use-module (gnu system shadow)
+  #:use-module (guix gexp)
+  #:use-module (guix store)
+  #:use-module (guix packages)
+  #:use-module (guix derivations)
+  #:use-module (guix records)
+  #:use-module (guix deprecation)
+  #:use-module (srfi srfi-1)
+  #:use-module (srfi srfi-9)
+  #:use-module (srfi srfi-26)
+  #:use-module (ice-9 match)
+  #:use-module (artwork)
+  #:export (%default-slim-theme-modified
+	    %default-slim-theme-name-modified))
+
+(define %default-slim-theme-modified
+  (file-append %artwork-channel "/slim"))
+
+(define %default-slim-theme-name-modified
+  ;; This must be the name of the sub-directory in %DEFAULT-SLIM-THEME that
+  ;; contains the actual theme files.
+  "1.x.ext")
