@@ -61,6 +61,7 @@
        ,emacs-erc-status-sidebar-master)
       ("emacs-fancy-battery"
        ,emacs-fancy-battery-master)
+      ("emacs-geiser" ,emacs-geiser)
       ("emacs-gitpatch" ,emacs-gitpatch)
       ("emacs-guix" ,emacs-guix)
       ("emacs-helm" ,emacs-helm)
