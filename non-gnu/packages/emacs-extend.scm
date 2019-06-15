@@ -740,8 +740,8 @@ package recipes.
      (license license:gpl3+))))
 
 (define-public emacs-racket-mode-master
-  (let ((commit "2292e74bac8ad673dd23ffe4fe5b99197aa00649")
-        (revision "4"))
+  (let ((commit "a19dba1e84bc593ee8ee212d6a8fc97d211345b9")
+        (revision "5"))
     (package
       (name "emacs-racket-mode")
       (version (git-version "0.0.0" revision commit))
@@ -754,7 +754,7 @@ package recipes.
          (file-name (git-file-name name version))
          (sha256
           (base32
-           "0sq130mv4y5khfr9hgpw39jdzv38mc6jr7ahrjakbzwnfzdv8w14"))))
+           "1ini9lhgjahb77ag9hijmnz7gyq2s3i9frk64flrs4fbvpjy31k3"))))
       (build-system emacs-build-system)
       (arguments
        `(#:include '("\\.el$" "\\.rkt$")))
