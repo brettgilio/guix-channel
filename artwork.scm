@@ -4,7 +4,7 @@
   #:export (%artwork-channel))
 
 (define %artwork-channel
-  (let ((commit "defa3d04cb05b3de96e707877c17d6ad111a127b"))
+  (let ((commit "05421aa22ca0ccd8a21bbda4b99aaa421e7ffa70"))
     (origin
       (method git-fetch)
       (uri (git-reference
@@ -14,4 +14,4 @@
                                 "-checkout"))
       (sha256
        (base32
-        "1cn2pgp2dvxwkkzhiqvnsxgsy8dg8q5hmc9m317r0gd9sxk7ycr2")))))
+        "1g8f1rdmj3nsf3j7b3d2vwynh18xil2kidb71h9lgs4qbacd3q9i")))))
