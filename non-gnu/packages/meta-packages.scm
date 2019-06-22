@@ -24,7 +24,8 @@
   #:use-module (non-gnu packages coq-extend)
   #:use-module (non-gnu packages emacs-extend)
   #:use-module (non-gnu packages language-servers)
-  #:use-module (non-gnu packages racket-extend))
+  #:use-module (non-gnu packages racket-extend)
+  #:use-module (non-gnu packages python-extend))
 
 (define %meta-base
   (package
@@ -96,7 +97,7 @@
       ("python" ,python)
       ("python" ,python "tk")
       ("python-language-server"
-       ,python-language-server)))))
+       ,python-language-server-tagged)))))
 
 (define-public meta-cobjc
   (package
