@@ -24,8 +24,8 @@
   #:use-module ((srfi srfi-1) #:hide (zip)))
 
 (define-public proof-general-master
-  (let ((commit "89a6166a2ee61ff9cc84ccffe681a275c64c6856")
-        (revision "6"))
+  (let ((commit "2ada467c2c2964a605659714f2a267db2c915952")
+        (revision "7"))
     (package
      (name "proof-general")
      (version (git-version "4.4" revision commit))
@@ -36,7 +36,7 @@
                     (commit commit)))
               (sha256
                (base32
-                "0gb0k4d5aiazm59q1l4s17v4igb82w91za2s7z1iib2rb5a8kr6w"))
+                "18bc7gb4qs76h0b9zma8q5xjkvwn6gqzxw0mhm5gkrdr92w7j8lq"))
               (file-name (git-file-name name version))))
      (build-system gnu-build-system)
      (native-inputs
