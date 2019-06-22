@@ -78,6 +78,78 @@
   #:use-module (srfi srfi-26)
   #:use-module (non-gnu packages hy))
 
+(define-public python-tagged
+  (package (inherit python-2)
+    (name "python")
+    (version "3.7.3")
+    (source (origin
+              (method url-fetch)
+              (uri (string-append "https://www.python.org/ftp/python/"
+                                  version "/Python-" version ".tar.xz"))
+              (patches (search-patches
+                        "python-fix-tests.patch"
+                        "python-3-fix-tests.patch"
+                        "python-3-deterministic-build-info.patch"
+                        "python-3-search-paths.patch"))
+              (patch-flags '("-p0"))
+              (sha256
+               (base32
+                "066ka8csjwkycqpgyv424d8hhqhfd7r6svsp4sfcvkylci0baq6s"))
+              (snippet
+               '(begin
+                  (for-each delete-file
+                            '(;; This test may hang and eventually run out of
+                              ;; memory on some systems:
+                              ;; <https://bugs.python.org/issue34587>
+                              "Lib/test/test_socket.py"
+
+                              ;; These tests fail on AArch64.
+                              "Lib/ctypes/test/test_win32.py"
+                              "Lib/test/test_fcntl.py"
+                              "Lib/test/test_posix.py"))
+                  #t))))
+    (arguments
+     (substitute-keyword-arguments (package-arguments python-2)
+       ((#:phases phases)
+       `(modify-phases ,phases
+          ;; Unset SOURCE_DATE_EPOCH while running the test-suite and set it
+          ;; again afterwards.  See <https://bugs.python.org/issue34022>.
+          (add-before 'check 'unset-SOURCE_DATE_EPOCH
+            (lambda _ (unsetenv "SOURCE_DATE_EPOCH") #t))
+          (add-after 'check 'reset-SOURCE_DATE_EPOCH
+            (lambda _ (setenv "SOURCE_DATE_EPOCH" "1") #t))
+           ;; FIXME: Without this phase we have close to 400 files that
+           ;; differ across different builds of this package.  With this phase
+           ;; there are 44 files left that differ.
+           (add-after 'remove-tests 'rebuild-bytecode
+             (lambda* (#:key outputs #:allow-other-keys)
+               (let ((out (assoc-ref outputs "out")))
+                 ;; Disable hash randomization to ensure the generated .pycs
+                 ;; are reproducible.
+                 (setenv "PYTHONHASHSEED" "0")
+                 (for-each
+                  (lambda (opt)
+                    (format #t "Compiling with optimization level: ~a\n"
+                            (if (null? opt) "none" (car opt)))
+                    (for-each (lambda (file)
+                                (apply invoke
+                                       `(,(string-append out "/bin/python3")
+                                         ,@opt
+                                         "-m" "compileall"
+                                         "-f" ; force rebuild
+                                         ;; Don't build lib2to3, because it's Python 2 code.
+                                         "-x" "lib2to3/.*"
+                                         ,file)))
+                              (find-files out "\\.py$")))
+                  (list '() '("-O") '("-OO")))
+                 #t)))))))
+    (native-search-paths
+     (list (search-path-specification
+            (variable "PYTHONPATH")
+            (files (list (string-append "lib/python"
+                                        (version-major+minor version)
+                                        "/site-packages"))))))))
+
 (define-public python-fastentrypoints
   (package
    (name "python-fastentrypoints")
