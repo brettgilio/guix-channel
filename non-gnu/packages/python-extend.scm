@@ -61,6 +61,7 @@
   #:use-module (gnu packages xml)
   #:use-module (gnu packages xorg)
   #:use-module (gnu packages xdisorg)
+  #:use-module (gnu packages python)
   #:use-module (gnu packages tcl)
   #:use-module (gnu packages bdw-gc)
   #:use-module (gnu packages serialization)
@@ -166,36 +167,3 @@ with a new public API, and RPython support.")
    (synopsis "Python control systems library")
    (description "Python control systems library")
    (license license:bsd-3)))
-
-(define-public python-language-server-tagged
-  (package
-    (name "python-language-server")
-    (version "0.27.0")
-    (source
-     (origin
-       (method url-fetch)
-       (uri (pypi-uri "python-language-server" version))
-       (sha256
-        (base32
-         "0rdixdix4vrvzszpd6m87l243lwkrlmz23yqaqpw7isbpm1x1ikp"))))
-    (build-system python-build-system)
-    (propagated-inputs
-     `(("python-pluggy" ,python-pluggy)
-       ("python-jsonrpc-server" ,python-jsonrpc-server)
-       ("python-jedi" ,python-jedi)
-       ("python-yapf" ,python-yapf)
-       ("python-pyflakes" ,python-pyflakes)
-       ("python-pydocstyle" ,python-pydocstyle)
-       ("python-pycodestyle" ,python-pycodestyle)
-       ("python-mccabe" ,python-mccabe)
-       ("python-rope" ,python-rope)
-       ("python-autopep8" ,python-autopep8)
-       ("python-pylint" ,python-pylint)))
-    (home-page "https://github.com/palantir/python-language-server")
-    (synopsis "Python implementation of the Language Server Protocol")
-    (description
-     "The Python Language Server (pyls) is an implementation of the Python 3
-language specification for the Language Server Protocol (LSP).  This tool is
-used in text editing environments to provide a complete and integrated
-feature-set for programming Python effectively.")
-    (license license:expat)))
