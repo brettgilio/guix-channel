@@ -19,6 +19,7 @@
   #:use-module (gnu packages python-xyz)
   #:use-module (gnu packages rsync)
   #:use-module (gnu packages statistics)
+  #:use-module (gnu packages tex)
   #:use-module (gnu packages valgrind)
   #:use-module (gnu packages version-control)
   #:use-module (non-gnu packages coq-extend)
@@ -223,3 +224,16 @@
       ("emacs-racket-mode"
        ,emacs-racket-mode-master)
       ("racket" ,racket-tagged)))))
+
+(define-public meta-tex
+  (package
+   (inherit %meta-base)
+   (name "meta-tex")
+   (propagated-inputs
+    `(("meta-emacs" ,meta-emacs)
+      ("emacs-auctex" ,emacs-auctex)
+      ("emacs-company-auctex"
+       ,emacs-company-auctex)
+      ("emacs-company-math"
+       ,emacs-company-math-master)
+      ("texlive" ,texlive)))))
