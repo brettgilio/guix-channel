@@ -136,11 +136,11 @@ as better scaling of and anti aliasing of the icons.")
       (list license:expat license:gpl3+ license:silofl1.1 license:asl2.0)))))
 
 (define-public emacs-doom-modeline-tagged
-  (let ((commit "6293c63924732f4b5592a8ca580192df2504c159")
-        (revision "5"))
+  (let ((commit "ee4619d3670830180ffd87b1598d74312b5b9808")
+        (revision "6"))
     (package
      (name "emacs-doom-modeline")
-     (version (git-version "2.3.3" revision commit))
+     (version (git-version "2.3.5" revision commit))
      (source (origin
               (method git-fetch)
               (uri (git-reference
@@ -148,7 +148,7 @@ as better scaling of and anti aliasing of the icons.")
                     (commit commit)))
               (sha256
                (base32
-                "0rnm4dpbrbb78rxihn83sxwl78w5gam2pyld9gh5v44vc3wybxj9"))
+                "0r1nr2q0nscjp01k3hg32difxc12ck0qk0fpkc23lwx12g3x45y8"))
               (file-name (git-file-name name version))))
      (build-system emacs-build-system)
      (propagated-inputs
