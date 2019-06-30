@@ -5,6 +5,7 @@
   #:use-module (guix download)
   #:use-module (guix git-download)
   #:use-module (guix build-system trivial)
+  #:use-module (gnu packages audio)
   #:use-module (gnu packages base)
   #:use-module (gnu packages build-tools)
   #:use-module (gnu packages commencement)
@@ -14,6 +15,7 @@
   #:use-module (gnu packages emacs-xyz)
   #:use-module (gnu packages haskell-apps)
   #:use-module (gnu packages m4)
+  #:use-module (gnu packages music)
   #:use-module (gnu packages ocaml)
   #:use-module (gnu packages python)
   #:use-module (gnu packages python-xyz)
@@ -237,3 +239,10 @@
       ("emacs-company-math"
        ,emacs-company-math-master)
       ("texlive" ,texlive)))))
+(define-public meta-lilypond
+  (package
+   (inherit %meta-base)
+   (name "meta-lilypond")
+   (propagated-inputs
+    `(("meta-emacs" ,meta-emacs)
+      ("lilypond" ,lilypond)))))
