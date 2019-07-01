@@ -246,3 +246,11 @@
    (propagated-inputs
     `(("meta-emacs" ,meta-emacs)
       ("lilypond" ,lilypond)))))
+
+(define-public meta-commonlisp
+  (package
+   (inherit %meta-base)
+   (name "meta-commonlisp")
+   (propagated-inputs
+    `(("meta-emacs" ,meta-emacs)
+      ("emacs-slime" ,emacs-slime-tagged)))))
