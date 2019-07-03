@@ -22,7 +22,7 @@
          "linux-" version ".tar.xz")))
 
 (define-public linux-nonfree-4.19
-  (let* ((version "4.19.56"))
+  (let* ((version "4.19.57"))
     (package
      (inherit linux-libre)
      (name "linux-nonfree")
@@ -32,7 +32,7 @@
 	      (uri (linux-nonfree-urls version))
 	      (sha256
 	       (base32
-		"1pvbjsy2bd76mmxxv6bf8kh7g6ixlrbj92cm5qq6yjdr2lr989kk"))))
+		"11rz1pfphc4zkn3fbfavn1764g3ymp4b1bfnr7b630w8smcmfz1j"))))
      (synopsis "Mainline Linux kernel, nonfree binary blobs included.")
      (description "Linux is a kernel.")
      (home-page "http://kernel.org/")
@@ -41,7 +41,7 @@
 (define-public iwlwifi-firmware-nonfree
   (package
    (name "iwlwifi-firmware-nonfree")
-   (version "7ae3a09dcc7581da3fcc6c578429b89e2764a684")
+   (version "70e43940b05e8d6e0c5f15b5e2d67760f1581ece")
    (source (origin
 	    (method git-fetch)
 	    (uri (git-reference
