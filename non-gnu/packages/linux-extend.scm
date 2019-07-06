@@ -39,32 +39,34 @@
      (license license:gpl2))))
 
 (define-public iwlwifi-firmware-nonfree
-  (package
-   (name "iwlwifi-firmware-nonfree")
-   (version "70e43940b05e8d6e0c5f15b5e2d67760f1581ece")
-   (source (origin
-	    (method git-fetch)
-	    (uri (git-reference
-		  (url "git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git")
-		  (commit version)))
-	    (sha256
-	     (base32
-	      "0dbnib2gh8kajyys3pps99lp5s4k6b26v2jmbq2x3vbl9fa1xgda"))))
-   (build-system trivial-build-system)
-   (arguments
-    `(#:modules ((guix build utils))
-      #:builder (begin
-		  (use-modules (guix build utils))
-		  (let ((source (assoc-ref %build-inputs "source"))
-			(fw-dir (string-append %output "/lib/firmware")))
-		    (mkdir-p fw-dir)
-		    (for-each (lambda (file)
-				(copy-file file
-					   (string-append fw-dir "/"
-							  (basename file))))
-			      (find-files source "iwlwifi-.*\\.ucode$|LICENCE\\.iwlwifi_firmware$"))
-		    #t))))
-   (home-page "https://wireless.wiki.kernel.org/en/users/drivers/iwlwifi")
-   (synopsis "Non-free firmware for Intel wifi chips")
-   (description "Non-free firmware for Intel wifi chips")
-   (license (license:non-copyleft "http://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=blob_plain;f=LICENCE.iwlwifi_firmware;hb=HEAD"))))
+  (let ((commit "0731d06eadc7d9c52e58f354727101813b8da6ea")
+	(revision "7"))
+    (package
+     (name "iwlwifi-firmware-nonfree")
+     (version (git-version "20190618" revision commit))
+     (source (origin
+	      (method git-fetch)
+	      (uri (git-reference
+		    (url "https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git")
+		    (commit commit)))
+	      (sha256
+	       (base32
+		"0dbnib2gh8kajyys3pps99lp5s4k6b26v2jmbq2x3vbl9fa1xgda"))))
+     (build-system trivial-build-system)
+     (arguments
+      `(#:modules ((guix build utils))
+	#:builder (begin
+		    (use-modules (guix build utils))
+		    (let ((source (assoc-ref %build-inputs "source"))
+			  (fw-dir (string-append %output "/lib/firmware")))
+		      (mkdir-p fw-dir)
+		      (for-each (lambda (file)
+				  (copy-file file
+					     (string-append fw-dir "/"
+							    (basename file))))
+				(find-files source "iwlwifi-.*\\.ucode$|LICENCE\\.iwlwifi_firmware$"))
+		      #t))))
+     (home-page "https://wireless.wiki.kernel.org/en/users/drivers/iwlwifi")
+     (synopsis "Non-free firmware for Intel wifi chips")
+     (description "Non-free firmware for Intel wifi chips")
+     (license (license:non-copyleft "http://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=blob_plain;f=LICENCE.iwlwifi_firmware;hb=HEAD")))))
