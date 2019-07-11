@@ -308,8 +308,8 @@ use M-x company-coq-tutorial to open the tutorial.
 
 ;; Track master
 (define-public emacs-fstar-mode-master
-  (let ((commit "9ce914a35c7c4a413279087c795c329ca88d0bc1")
-        (revision "3"))
+  (let ((commit "ddb653cb3d6ba6568ffaf531ca57c9ea3e7498f5")
+        (revision "4"))
     (package
      (name "emacs-fstar-mode")
      (version (git-version "0.9.4.0" revision commit))
@@ -320,7 +320,7 @@ use M-x company-coq-tutorial to open the tutorial.
                     (commit commit)))
               (sha256
                (base32
-                "1lb815983xd0237a9j9nrwrq685pqf0mcqrj2hbvgcva59ysnrji"))
+                "0mr48y24p81srv2m4glif1d7iy6i7jpx98lbv9577xry22d3vvhb"))
               (file-name (git-file-name name version))))
      (build-system emacs-build-system)
      (propagated-inputs
