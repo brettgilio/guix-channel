@@ -808,6 +808,7 @@ package recipes.
      (description "This package provides an extensible Emacs dashboard, with
 sections for bookmarks, projectil projects, org-agenda and more. ")
      (license license:gpl3+))))
+
 (define-public emacs-slime-tagged
   (let ((commit "c1f15e2bd02fabe7bb468b05fe311cd9a932f14f")
         (revision "1"))
