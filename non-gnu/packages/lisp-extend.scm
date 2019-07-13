@@ -124,28 +124,4 @@ productive, customizable lisp based systems.")
    (name "stumpwm-system")))
   
 (define-public sbcl-clx-master
-  (let ((commit "4b9c2026c98e81af5734106dc19a6609c2cbe5ab")
-        (revision "1"))
-    (package
-     (name "sbcl-clx")
-     (version (git-version "0.7.5" revision commit))
-     (source
-      (origin
-       (method git-fetch)
-       (uri (git-reference
-	     (url "https://github.com/sharplispers/clx.git")
-	     (commit commit)))
-       (file-name (string-append "clx-" version "-checkout"))
-       (sha256
-	(base32
-	 "0apwflfr0l8hwfn3vcchll3zw6g19qq4d6cgi0mac13m95rmpzvg"))))
-     (build-system asdf-build-system/sbcl)
-     (propagated-inputs
-      `(("sbcl-fiasco" ,sbcl-fiasco)))
-     (home-page "http://www.cliki.net/portable-clx")
-     (synopsis "X11 client library for Common Lisp")
-     (description "CLX is an X11 client library for Common Lisp.  The code was
-originally taken from a CMUCL distribution, was modified somewhat in order to
-make it compile and run under SBCL, then a selection of patches were added
-from other CLXes around the net.")
-     (license license:x11))))
+  (deprecated-package "sbcl-clx" sbcl-clx))
