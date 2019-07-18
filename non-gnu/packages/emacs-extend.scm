@@ -347,33 +347,7 @@ See https://github.com/FStarLang/fstar-mode.el for setup and usage tips.
      (license license:expat))))
 
 (define-public emacs-ccls-master
-  (let ((commit "2764ddd57b03646f0327ea680a954b4a67450aef")
-        (revision "1"))
-    (package
-     (name "emacs-ccls")
-     (version (git-version "0.0.0" revision commit))
-     (source (origin
-              (method git-fetch)
-              (uri (git-reference
-                    (url "https://github.com/MaskRay/emacs-ccls.git")
-                    (commit commit)))
-              (sha256
-               (base32
-                "16427jvzhjy8kpvlgl3qzkzppv98124hkgi8q8pv1h7m46k9lhh3"))
-              (file-name (git-file-name name version))))
-     (build-system emacs-build-system)
-     (propagated-inputs
-      `(("emacs-lsp-mode" ,emacs-lsp-mode)
-	("emacs-dash" ,emacs-dash)
-	("emacs-projectile" ,emacs-projectile)))
-     (home-page
-      "https://github.com/MaskRay/emacs-ccls")
-     (synopsis "ccls client for lsp-mode")
-     (description
-      "To enable, call (lsp) in c-mode-hook c++-mode-hook objc-mode-hook.
-See more at https://github.com/MaskRay/ccls/wiki/Emacs
-")
-     (license license:expat))))
+  (deprecated-package "emacs-ccls" emacs-ccls))
 
 (define-public emacs-quick-peek-master
   (let ((commit "fd8a6c81422932539d221f39f18c90f2811f2dd9")
