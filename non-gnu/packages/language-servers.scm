@@ -59,14 +59,14 @@
 (define-public python-language-server-tagged
   (package
     (name "python-language-server")
-    (version "0.27.0")
+    (version "0.28.0")
     (source
      (origin
        (method url-fetch)
        (uri (pypi-uri "python-language-server" version))
        (sha256
         (base32
-         "0rdixdix4vrvzszpd6m87l243lwkrlmz23yqaqpw7isbpm1x1ikp"))))
+         "02an6fsmrnqcpk7yq4s7px6asfwx0diykfsvnqd3c9511sc2lnrs"))))
     (build-system python-build-system)
     (propagated-inputs
      `(("python-pluggy" ,python-pluggy)
