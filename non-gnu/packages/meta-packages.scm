@@ -72,6 +72,7 @@
       ("emacs-magit" ,emacs-magit)
       ("emacs-magit-popup"
        ,emacs-magit-popup)
+      ("emacs-mastodon" ,emacs-mastodon)
       ("emacs-nix-mode" ,emacs-nix-mode)
       ("emacs-nov-el" ,emacs-nov-el)
       ("emacs-org" ,emacs-org)
