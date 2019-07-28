@@ -850,3 +850,50 @@ While lisp-mode supports editing Lisp source files, @command{slime-mode}
 adds support for interacting with a running Common Lisp process
 for compilation, debugging, documentation lookup, and so on.")
     (license (list license:gpl2+ license:public-domain)))))
+
+(define-public emacs-matrix-client-master
+  (let ((commit "1632aea20e258986af5e5ad3ec50c1caf93b26a4"))
+    (package
+      (name "emacs-matrix-client")
+      (version (git-version "0.0.0" "5" commit))
+      (source (origin
+                (method git-fetch)
+                (uri (git-reference
+                      (url "https://github.com/jgkamat/matrix-client-el.git")
+                      (commit commit)))
+                (file-name (git-file-name name version))
+                (sha256
+                 (base32
+                  "0hdq08qg4lngvpq0ar74r2bb42v8m4h7lhqai35d3gk11gkihw67"))))
+      (build-system emacs-build-system)
+      (arguments
+       `(#:phases
+         (modify-phases %standard-phases
+           (add-after 'unpack 'add-missing-require
+             ;; Fix a filter error at runtime due to a missing require.
+             ;; Reported upstream:
+             ;; <https://github.com/alphapapa/matrix-client.el/issues/76>
+             (lambda _
+               (substitute* "matrix-client-room.el"
+                 (("\\(require 'dash-functional\\)" all)
+                  (string-append all "\n" "(require 'anaphora)")))
+               #t)))))
+      (propagated-inputs
+       `(("a" ,emacs-a)
+         ("anaphora" ,emacs-anaphora)
+         ("dash" ,emacs-dash)
+         ("esxml" ,emacs-esxml)
+         ("f" ,emacs-f)
+         ("frame-purpose" ,emacs-frame-purpose)
+         ("ht" ,emacs-ht)
+         ("ov" ,emacs-ov)
+         ("rainbow-identifiers" ,emacs-rainbow-identifiers)
+         ("request" ,emacs-request)
+         ("s" ,emacs-s)
+         ("tracking" ,emacs-tracking)))
+      (home-page "https://github.com/jgkamat/matrix-client-el")
+      (synopsis "Matrix client for Emacs")
+      (description "@code{matrix-client} is a simple chat UI to Matrix.org
+rooms.  It also provides an API which allows Emacs to seamlessly create
+RPC channels with users and other software.")
+      (license license:gpl3+))))
