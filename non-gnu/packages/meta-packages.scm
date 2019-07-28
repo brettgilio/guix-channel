@@ -241,6 +241,7 @@
       ("emacs-company-math"
        ,emacs-company-math-master)
       ("texlive" ,texlive)))))
+
 (define-public meta-lilypond
   (package
    (inherit %meta-base)
