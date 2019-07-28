@@ -73,6 +73,8 @@
       ("emacs-magit-popup"
        ,emacs-magit-popup)
       ("emacs-mastodon" ,emacs-mastodon)
+      ("emacs-matrix-client"
+       ,emacs-matrix-client-master)
       ("emacs-nix-mode" ,emacs-nix-mode)
       ("emacs-nov-el" ,emacs-nov-el)
       ("emacs-org" ,emacs-org)
