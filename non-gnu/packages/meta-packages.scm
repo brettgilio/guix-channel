@@ -33,7 +33,7 @@
 (define %meta-base
   (package
     (name #f)
-    (version "23")
+    (version "24")
     (source #f)
     (build-system trivial-build-system)
     (arguments '(#:builder (begin (mkdir %output) #t)))
