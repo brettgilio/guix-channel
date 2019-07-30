@@ -897,3 +897,80 @@ for compilation, debugging, documentation lookup, and so on.")
 rooms.  It also provides an API which allows Emacs to seamlessly create
 RPC channels with users and other software.")
       (license license:gpl3+))))
+
+(define-public emacs-pdf-tools-master
+  (let ((commit "db7de3901ae0e55f6ab8cf9baec257f706c3d16e")
+	(revision "1"))
+    (package
+     (name "emacs-pdf-tools")
+     (version (git-version "0.90" revision commit))
+     (home-page "https://github.com/politza/pdf-tools")
+     (source (origin
+              (method git-fetch)
+              (uri (git-reference
+		    (url "https://github.com/politza/pdf-tools.git")
+		    (commit commit)))
+              (file-name (git-file-name name version))
+              (sha256
+               (base32
+                "1vvhgxxg5lpmh0kqjgy8x1scdaah3wb76h2zj7x99ayym2bxyigv"))))
+     (build-system gnu-build-system)
+     (arguments
+      `(#:tests? #f                      ; there are no tests
+	#:modules ((guix build gnu-build-system)
+		   ((guix build emacs-build-system) #:prefix emacs:)
+		   (guix build utils)
+		   (guix build emacs-utils))
+	#:imported-modules (,@%gnu-build-system-modules
+			    (guix build emacs-build-system)
+			    (guix build emacs-utils))
+	#:phases
+	(modify-phases %standard-phases
+		       ;; Build server side using 'gnu-build-system'.
+		       (add-after 'unpack 'enter-server-dir
+				  (lambda _ (chdir "server") #t))
+		       (add-after 'enter-server-dir 'autogen
+				  (lambda _
+				    (invoke "bash" "autogen.sh")))
+		       
+		       ;; Build emacs side using 'emacs-build-system'.
+		       (add-after 'compress-documentation 'enter-lisp-dir
+				  (lambda _ (chdir "../lisp") #t))
+		       (add-after 'enter-lisp-dir 'emacs-patch-variables
+				  (lambda* (#:key outputs #:allow-other-keys)
+				    (for-each make-file-writable (find-files "."))
+				    
+				    ;; Set path to epdfinfo program.
+				    (emacs-substitute-variables "pdf-info.el"
+								("pdf-info-epdfinfo-program"
+								 (string-append (assoc-ref outputs "out")
+										"/bin/epdfinfo")))
+				    ;; Set 'pdf-tools-handle-upgrades' to nil to avoid "auto
+				    ;; upgrading" that pdf-tools tries to perform.
+				    (emacs-substitute-variables "pdf-tools.el"
+								("pdf-tools-handle-upgrades" '()))))
+		       (add-after 'emacs-patch-variables 'emacs-set-emacs-load-path
+				  (assoc-ref emacs:%standard-phases 'set-emacs-load-path))
+		       (add-after 'emacs-set-emacs-load-path 'emacs-install
+				  (assoc-ref emacs:%standard-phases 'install))
+		       (add-after 'emacs-install 'emacs-build
+				  (assoc-ref emacs:%standard-phases 'build))
+		       (add-after 'emacs-install 'emacs-make-autoloads
+				  (assoc-ref emacs:%standard-phases 'make-autoloads)))))
+     (native-inputs `(("autoconf" ,autoconf)
+		      ("automake" ,automake)
+		      ("pkg-config" ,pkg-config)
+		      ("emacs" ,emacs-minimal)))
+     (inputs `(("poppler" ,poppler)
+	       ("cairo" ,cairo)
+	       ("glib" ,glib)
+	       ("libpng" ,libpng)
+	       ("zlib" ,zlib)))
+     (propagated-inputs `(("tablist" ,emacs-tablist)))
+     (synopsis "Emacs support library for PDF files")
+     (description
+      "PDF Tools is, among other things, a replacement of DocView for PDF
+files.  The key difference is that pages are not pre-rendered by
+e.g. ghostscript and stored in the file-system, but rather created on-demand
+and stored in memory.")
+     (license license:gpl3+))))
