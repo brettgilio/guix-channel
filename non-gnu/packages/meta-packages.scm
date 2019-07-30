@@ -80,6 +80,8 @@
       ("emacs-org" ,emacs-org)
       ("emacs-pdf-tools" ,emacs-pdf-tools-master)
       ("emacs-realgud" ,emacs-realgud)
+      ("emacs-solaire-mode"
+       ,emacs-solaire-mode)
       ("emacs-use-package" ,emacs-use-package)
       ("emacs-webpaste"
        ,emacs-webpaste-tagged)
