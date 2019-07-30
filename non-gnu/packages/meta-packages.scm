@@ -78,7 +78,7 @@
       ("emacs-nix-mode" ,emacs-nix-mode)
       ("emacs-nov-el" ,emacs-nov-el)
       ("emacs-org" ,emacs-org)
-      ("emacs-pdf-tools" ,emacs-pdf-tools)
+      ("emacs-pdf-tools" ,emacs-pdf-tools-master)
       ("emacs-realgud" ,emacs-realgud)
       ("emacs-use-package" ,emacs-use-package)
       ("emacs-webpaste"
