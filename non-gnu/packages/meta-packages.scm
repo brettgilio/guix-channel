@@ -61,6 +61,7 @@
        ,emacs-desktop-environment)
       ("emacs-doom-modeline"
        ,emacs-doom-modeline-tagged)
+      ("emacs-emms" ,emacs-emms)
       ("emacs-erc-status-sidebar"
        ,emacs-erc-status-sidebar-master)
       ("emacs-fancy-battery"
